@@ -1,0 +1,16 @@
+ NOTES: If you full fill a task, add [*], i..e,
+  ☐ [*] bla
+
+ List files:
+    ☐ Create a folder with obsolete files and moves those there.
+
+ TEST:
+    ☐ Create a TESTS folder.
+      ☐ Add scripts that shows the tests.
+
+ Style:
+    ☐
+
+ Documentation:
+ 
+ New code:
