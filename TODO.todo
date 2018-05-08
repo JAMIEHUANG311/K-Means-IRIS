@@ -2,7 +2,7 @@ NOTES: If you full fill a task, add [x], i..e,
  [x] bla
 
 List files:
-   [] It looks like you did a folder with the same file except that
+   [x] It looks like you did a folder with the same file except that
    the latest one (in the folder) has [*] before each function. This
    is not correct. [] marks are for TODO.dodo document. Let me know
    if this is clear.
@@ -12,11 +12,11 @@ TEST:
      [] Add scripts that shows the tests.
 
 Style:
-   [] The description for each function must be in betweeen """ """ instead
+   [x] The description for each function must be in betweeen """ """ instead
    of #. See, for instance, helita/sim/bifrost.py.
 
 Github:
-    [] Invite Alberto to this github
+    [x] Invite Alberto to this github
 
 
 Documentation:
@@ -38,7 +38,7 @@ code:
       __init__(self, data, i3, wvl, ...., npzfilename=""/net/opal/Volumes/Amnesia/mpi3drun/2Druns/genohm/rain/new_inte1_02.npy.npz":
       and then self.data = np.load(npzfilename) in line 16.
     [] Similarly with k-means.pck
-    [] All the functions within a class must have (self) as a input parameter.
+    [x] All the functions within a class must have (self) as a input parameter.
     [] The variables between different functions can use the variables from others
     if they have been storaged in the library, i.e., self.i3 could be use in
     function fit:
