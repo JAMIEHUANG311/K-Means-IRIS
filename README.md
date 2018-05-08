@@ -4,4 +4,4 @@ Description: We classify the synthetic profiles of MG II k & h in our dataset (5
 
 Table of Contents: Functions include: create_spectral_map, 
 
-Credits: Juan Martinez-Sykora, Alberto Sainz-Dalda
+Contributors/Credits: Juan Martinez-Sykora, Alberto Sainz-Dalda
