@@ -20,7 +20,7 @@ Github:
 
 
 Documentation:
-   [] Fill README.md with information related to this library.
+   [x] Fill README.md with information related to this library.
    [] Consider use github wiki for a more complete documentation
      (at least for the bifrost.md). This can be found here
      (https://github.com/JAMIEHUANG311/K-Means-IRIS/wiki). This will allow
