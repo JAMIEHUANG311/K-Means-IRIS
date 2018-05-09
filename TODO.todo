@@ -28,10 +28,10 @@ Documentation:
 code:
    [] Add other functions that you did. All the functions that does the interpolation,
    reads the synthetic data, separates between wavelength range etc.
-   [] Try to separate them in class or ordered them by functionality, i.e.,
+   [x] Try to separate them in class or ordered them by functionality, i.e.,
       1st functions to read, 2nd functions treat the data, 3rd K-min and similar
       4th sanity functions, such as plotting etc.
-   [] Avoid harcoding, e.g., "/net/opal/Volumes/Amnesia/mpi3drun/2Druns/genohm/rain/new_inte1_02.npy.npz"
+   [x] Avoid harcoding, e.g., "/net/opal/Volumes/Amnesia/mpi3drun/2Druns/genohm/rain/new_inte1_02.npy.npz"
       Instead, introduce a function that reads using an input parameter. You could consider to
       add a default if you like that that one is ok to be hardcode for now:
       __init__(self, data, i3, wvl, ...., npzfilename=""/net/opal/Volumes/Amnesia/mpi3drun/2Druns/genohm/rain/new_inte1_02.npy.npz":
