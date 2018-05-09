@@ -1,4 +1,4 @@
-#Code to 
+#Code to show the locations of the k-means labels in the 30 clusters. 
 
 plt.figure(figsize = (33,33))
 print(km_map_datacube.shape)
