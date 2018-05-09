@@ -1,1 +1,23 @@
+#Code to 
 
+plt.figure(figsize = (33,33))
+print(km_map_datacube.shape)
+cluster_size = np.zeros(30)
+
+for i in range(0, 30):
+    plt.subplot(5,6,i+1)
+    plt.xlabel('X [DNs]')
+    plt.ylabel('Time [Seconds]')
+    w = np.where(km.labels_ == i)[0]
+    cluster_size[i] = w.shape[0]
+    x = w/dim_i3[1]
+    y = w%dim_i3[1]
+    km_map_datacube[x.astype(int),y.astype(int),i] = i
+    plt.imshow(km_map_datacube[:,:,i], extent=[0,157,0,3000], aspect='auto')
+plt.show()
+
+plt.plot(cluster_size)
+plt.xlabel('Cluster label #')
+plt.ylabel('Number of Elements')
+plt.show()
+    
