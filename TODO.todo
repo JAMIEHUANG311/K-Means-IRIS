@@ -36,13 +36,12 @@ code:
       add a default if you like that that one is ok to be hardcode for now:
       __init__(self, data, i3, wvl, ...., npzfilename=""/net/opal/Volumes/Amnesia/mpi3drun/2Druns/genohm/rain/new_inte1_02.npy.npz":
       and then self.data = np.load(npzfilename) in line 16.
-    [] Similarly with k-means.pck
+    [x] Similarly with k-means.pck
     [x] All the functions within a class must have (self) as a input parameter.
-    [] The variables between different functions can use the variables from others
+    [x] The variables between different functions can use the variables from others
     if they have been storaged in the library, i.e., self.i3 could be use in
     function fit:
       mini_km = MiniBatchKMeans(n_clusters=30).fit(self.i3[:,1000:2000])
     compare with your version.
     Try to find which variables are useful to keep in self for other functions.
-    [] Do not hesitate to ask me if the bullets above are unclear.
     
