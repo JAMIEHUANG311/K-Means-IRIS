@@ -6,30 +6,37 @@ from sklearn.cluster import MiniBatchKMeans
 import pickle
 import time
 
-def __init__(self, data, i3, wvl, create_spectral_map, create_km_map, create_k-means_maps, time_import):
-'''initializes variables'''
+def __init__(self, data, i3, wvl, create_spectral_map,
+             create_km_map, create_k-means_maps,
+             time_import):
+    '''
+    initializes variables
+    '''
+    ### JMS I modified this description and the indent of this def __init__.
+    ### JMS Note also that I breack the first line. This is to follow pep8
+    
 
-	self.create_spectral_map = create_spectral_map
-	self.create_data_cube = create_data_cube
-	self.k-means_maps = k-means_maps
+    self.create_spectral_map = create_spectral_map
+    self.create_data_cube = create_data_cube
+    self.k-means_maps = k-means_maps
 
-def read_data(self, i3, wvl, npzfilename = ""/net/opal/Volumes/Amnesia/mpi3drun/2Druns/genohm/rain/new_inte1_02.npy.npz"")
+def read_data(self, i3, wvl, npzfilename = ""/net/opal/Volumes/Amnesia/mpi3drun/2Druns/genohm/rain/new_inte1_02.npy.npz"") ### JMS typo, Extra" in each side of the file  
 '''reads data, loads data, saves the loading of the data'''
 
 	self.data = np.load(npzfilename)
 	self.i3 = data["arr_0"]
 	self.wvl = data["arr_1"]
-	self.pick_in = open('k-means.pck', 'rb')
+	self.pick_in = open('k-means.pck', 'rb') ### JMS this is hard coded, put an input similar to npzfilename
 	self.km = pickle.load(pick_in)
 		
-def create_spectral_map(self, i3, wvl, ax):
+def create_spectral_map(self, i3, wvl, ax):  ###JMS this is a sanity plot, put at the end
 '''reshapes into 2D array
    interpolation
    adjusts wvl axis
    creates a spectral profile map showing the location of the clusters in all the labels as a whole
    inputs: i3, wvl, ax, outputs: prints the image of the spectral map'''
 
-	i3_2D = i3.reshape((i3.shape[0]*i3.shape[1], i3.shape[2]))
+	i3_2D = i3.reshape((i3.shape[0]*i3.shape[1], i3.shape[2])) ###JMS Note i3 and  wvl are defined in read_data. So no need to put input and use self.i3 and self.wvl
 	wvl_new = wvl*10.-2795.37
 	plt.subplots_adjust(bottom=0.2, top=.9, left=0.15)
 	axes_style = {'linewidth':2}
@@ -43,7 +50,7 @@ def create_spectral_map(self, i3, wvl, ax):
 	plt.savefig('spectral_map.eps')
 	plt.show()
 
-def create_km_map(self)
+def create_km_map(self) ###JMS this is a sanity plot, put at the end
 '''creates the image of the km_map_datacube  
    shows the locations of the k-means clusters for each labels
    outputs: prints the image of the km_map datacube'''
@@ -58,7 +65,7 @@ def create_km_map(self)
 	plt.colorbar()
 	plt.show()
 
-def create_k_means_maps(self, wvl)
+def create_k_means_maps(self, wvl)  ###JMS this is a sanity plot, put at the end
 '''creates the k_means maps 
    plots the spectral profile for the different k-means labels
    wavelength on the x axis and intensity on the y axis
@@ -72,15 +79,15 @@ def create_k_means_maps(self, wvl)
         plt.plot(wvl*10.-2795.37, km.cluster_centers_[i,0:2000]*1e3/3.454e-6)
 	plt.show()
 
-def fit(self, t0)
+def fit(self, t0) ###JMS this should be prior the maps. 
 '''uses the MiniBatchKMeans function to fit the i3_2D data into clusters
    inputs: t0'''
 
 	t0 = time.time()
-	mini_km = MiniBatchKMeans(n_clusters=30).fit(self.i3[:,1000:2000])
+	mini_km = MiniBatchKMeans(n_clusters=30).fit(self.i3[:,1000:2000]) # JMS self.i3 must be defined! (see line 
 	t_mini_batch = time.time() - t0
 
-def time_import(tm, inertia, t0)
+def time_import(tm, inertia, t0)  ###JMS Missing self. This should be prior the maps. 
 '''uses the MiniBatchKMeans function to fit the i3_2D data into clusters
    computes the inertia of the MiniBatchKMeans
    inputs: tm, inertia, t0, outputs: '''
@@ -101,5 +108,5 @@ def time_import(tm, inertia, t0)
 	plt.plot(inertia)
 	plt.show()
 
-$ pip install pep8
+$ pip install pep8  ###JMS Remove these two lines. 
 $ pip install autopep8
