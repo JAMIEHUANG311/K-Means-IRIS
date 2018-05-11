@@ -6,8 +6,8 @@ We classify the synthetic profiles of MG II k & h in our dataset (544005 profile
 ## Installation
 Works on MacOS, Linux, and Windows. You can also install it with pip:
 
-$ pip install pep8
-$ pip install autopep8
+    [] The tests must use the k-means library, i.e., import k-means
+    [] The tests must use the k-means library, i.e., import k-means
 
 Requires Python 3.0 or higher.
 
