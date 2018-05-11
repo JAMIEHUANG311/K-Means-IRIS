@@ -33,7 +33,7 @@ If you full fill a task, add [x], i..e,
 
 ## Documentation:
 
-   [] README.md: There are options that allows you to put bold, big letter, etc. 
+   [x] README.md: There are options that allows you to put bold, big letter, etc. 
        See one of the examples in helita for instance. 
 
    [] Consider use github wiki for a more complete documentation
@@ -50,7 +50,7 @@ If you full fill a task, add [x], i..e,
       1st functions to read, 2nd functions treat the data, 3rd K-min and similar
       4th sanity functions, such as plotting etc.
 
-   [] There are typos in line 16. Only one " in each side (see the code and comments in ### JMS)
+   [x] There are typos in line 16. Only one " in each side (see the code and comments in ### JMS)
 
    [x] time_import is missing self 
 
