@@ -11,7 +11,7 @@ If you full fill a task, add [x], i..e,
    is not correct. [] marks are for TODO.dodo document. Let me know
    if this is clear.
 
-   [] Still there are two files (one inside k-means and other 
+   [x] Still there are two files (one inside k-means and other 
    in the main directory), delete the oldest one. No need for now of a folder neither. 
    let me know if you need help on reorganize the files in github. 
 
@@ -25,7 +25,7 @@ If you full fill a task, add [x], i..e,
 
 ## Style:
 
-   [] I modified one example of your (first one in k-means.py), note the indent
+   [x] I modified one example of your (first one in k-means.py), note the indent
    of the description and how '''''' is added in separate lines. Use this style. 
    for each function.  #. See, for instance, helita/sim/bifrost.py.
 
@@ -52,7 +52,7 @@ If you full fill a task, add [x], i..e,
 
    [] There are typos in line 16. Only one " in each side (see the code and comments in ### JMS)
 
-   [] time_import is missing self 
+   [x] time_import is missing self 
 
    [x] The variables between different functions can use the variables from others
     if they have been storaged in the library, i.e., self.i3 could be use in
