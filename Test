@@ -1,3 +1,5 @@
      huang
      >>> import cd 
      >>> import pwd
+     >>> import k-means.py as km
+     >>> import 
