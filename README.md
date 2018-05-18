@@ -9,10 +9,12 @@ Works on MacOS, Linux, and Windows.
 1) Download the Python 3.6 version (can also download 2.7 version if necessary)
 2) Clone the latest version of helita from Github: git clone https://github.com/jamiehuang00/K-Means-IRIS
 3) Change helita/helita/io/__init__.py to read:
-    [] __all__ = ["crispex", "fio", "lp"] #, "ncdf", "sdf"]
-    [] from . import crispex
-    [] from . import lp
-    [] from . import ncdf
+  p
+    
+    __all__ = ["crispex", "fio", "lp"] #, "ncdf", "sdf"]
+    from . import crispex
+    from . import lp
+    from . import ncdf
 
 Requires Python 3.0 or higher.
 
