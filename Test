@@ -1,5 +1,5 @@
-     huang
-     >>> import cd 
+python
      >>> import pwd
+     >>> import imp
      >>> import k-means.py as km
-     >>> import 
+     >>> import matplotlib.pyplot as plt
