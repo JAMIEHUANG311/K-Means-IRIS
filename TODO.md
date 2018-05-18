@@ -18,26 +18,26 @@
 
 ## Style:
 
-   [] Dont leave empty lines between the  description of the code and 
+   [x] Dont leave empty lines between the  description of the code and 
    and function name. 
 
-   [] Make sure that you use the right (same) indent for each function. 
+   [x] Make sure that you use the right (same) indent for each function. 
 
-   [] Make sure that you follow pep8 requirements, e.g., some lines are way 
+   [x] Make sure that you follow pep8 requirements, e.g., some lines are way 
      too long. 
 
-   [] rbfilename is not a filename, it is a format. So remove 
+   [x] rbfilename is not a filename, it is a format. So remove 
    this input parameter and line 28 should be: 
 
         self.pick_in = open(kmeansfilename, "rb") 
 
-   [] self.pick_in is not need to store in self. so: 
+   [x] self.pick_in is not need to store in self. so: 
       
       pick_in = open(kmeansfilename, rbfilename) 
 
       self.km = pickle.load(pick_in) 
 
-   [] put an input parameter (verbose) for print statements, i.e., 
+   [x] put an input parameter (verbose) for print statements, i.e., 
       	  __init__ ...  verbose=True
      and each time that you call a print: 
      	 if verbose: 
@@ -51,13 +51,13 @@
 
 ## Documentation:
 
-   [] Complete README.md with: 
+   [x] Complete README.md with: 
 
-      [] python libraries used
+      [x python libraries used
 
-      [] helita, how to get it and setup
+      [x] helita, how to get it and setup
 
-   [] Do the intro more generic: 
+   [x] Do the intro more generic: 
       	 This code allows to read RH (in netCDF format) profiles. 
 	 It allows to selects specific lines, interpolate in an uniform 
 	 spectra and perform k-mean analysis. 
