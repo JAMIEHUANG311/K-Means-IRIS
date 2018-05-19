@@ -45,9 +45,11 @@
 
 ## Github:
 
-    [x] Invite Alberto to this github
+   [x] Invite Alberto to this github
 
     	[] Alberto, did you accepted the invitation?
+
+   [] Remeber to do git commit and push of the code. 
 
 ## Documentation:
 
