@@ -1,6 +1,6 @@
 python
      >>> import pwd
      >>> import imp
-     >>> import k-means.py as km
+     >>> import k-means as km
      >>> import matplotlib.pyplot as plt
      >>> from 
