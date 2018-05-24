@@ -49,7 +49,7 @@
 
     	[] Alberto, did you accepted the invitation?
 
-   [] Remeber to do git commit and push of the code. 
+   [x] Remeber to do git commit and push of the code. 
 
 ## Documentation:
 
