@@ -91,4 +91,4 @@
       mini_km = MiniBatchKMeans(n_clusters=30).fit(self.i3[:,1000:2000])
     compare with your version.
     Try to find which variables are useful to keep in self for other functions.
-   
+ 
