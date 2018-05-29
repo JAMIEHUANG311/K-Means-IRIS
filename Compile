@@ -9,6 +9,7 @@ python
      >>> import pickle
      >>> import imp
      >>> import helita
-     >>> 
+     >>> cd ~/helita/helita/sim
+     >>> from 
      
 
