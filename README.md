@@ -20,7 +20,7 @@ Requires Python 3.0 or higher.
 ## Usage
 ls
 ipython
->>> 
+ 
 
 >>> import numpy as np
 
