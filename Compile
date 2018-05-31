@@ -1,7 +1,6 @@
 ls
 ipython
  
-
 >>> import numpy as np
 
 >>> import matplotlib.pyplot as plt
@@ -20,4 +19,3 @@ ipython
 
 >>> from helita import kmeans as km
 
->>> 
