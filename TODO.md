@@ -12,7 +12,7 @@
 
 ## TEST:
 
-   [] Create a TESTS folder.
+   [x] Create a TESTS folder.
 
      [] Add scripts that shows the tests.
 
