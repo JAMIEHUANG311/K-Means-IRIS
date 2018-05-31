@@ -44,7 +44,7 @@ ipython
 
 
 ## Contributing
-If you would like to improve the code, your help is welcomed. To make a contribution, go to the right of the Branch menu, and click New pull request.
+If you would like to improve the code, your help is welcomed. To make a contribution, go to the right of the Branch menu, select the master branch, and click New pull request.
 
 ## Credits
 Juan Martinez-Sykora, Alberto Sainz-Dalda
