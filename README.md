@@ -21,15 +21,25 @@ Requires Python 3.0 or higher.
 ls
 ipython
 >>> 
+
 >>> import numpy as np
+
 >>> import matplotlib.pyplot as plt
+
 >>> from sklearn.cluster import KMeans
+
 >>> from sklearn.cluster import MiniBatchKMeans
+
 >>> import pickle
+
 >>> import imp
+
 >>> import helita
+
 >>> cd ~/helita/helita/sim
+
 >>> from helita import kmeans as km
+
 >>> 
 
 
