@@ -64,7 +64,7 @@
 	 It allows to selects specific lines, interpolate in an uniform 
 	 spectra and perform k-mean analysis. 
 
-   [] Consider use github wiki for a more complete documentation
+   [x] Consider use github wiki for a more complete documentation
      (at least for the bifrost.md). This can be found here
      (https://github.com/JAMIEHUANG311/K-Means-IRIS/wiki). This will allow
      various sections.
