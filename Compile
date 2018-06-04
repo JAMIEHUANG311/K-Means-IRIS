@@ -15,7 +15,8 @@ ipython
 
 >>> import helita
 
+>>> import time
+
 >>> cd ~/helita/helita/sim
 
 >>> from helita import kmeans as km
-
