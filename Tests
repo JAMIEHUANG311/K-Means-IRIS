@@ -19,8 +19,6 @@ ipython
 
 [inputs]
 >>> interp()
-[outputs]
->>> 
 
 [inputs]
 >>> time_import(tm, inertia, t0)
@@ -38,11 +36,14 @@ init = 10
 [inputs]
 >>> fit(t0)
 
-create_km_map()
+[inputs]
+>>> create_km_map()
 >>> 
 
-create_k_means_maps(self, wvl)
+[inputs]
+>>> create_k_means_maps(self, wvl)
 >>>
 
-create_spectral_map(self, i3, wvl, ax)
+[inputs]
+>>> create_spectral_map(self, i3, wvl, ax)
 >>>  
