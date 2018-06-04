@@ -1,22 +1,17 @@
-ls
-ipython
- 
->>> import numpy as np
+Compiling the code on Jupyter Notebook: 
 
->>> import matplotlib.pyplot as plt
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.cluster import KMeans
+from sklearn.cluster import MiniBatchKMeans
+import pickle
 
->>> from sklearn.cluster import KMeans
+data=np.load("/net/opal/Volumes/Amnesia/mpi3drun/2Druns/genohm/rain/new_inte1_02.npy.npz")
+print(data.keys())
+i3=data["arr_0"]
+wvl=data["arr_1"]
 
->>> from sklearn.cluster import MiniBatchKMeans
+print(i3.shape, min(wvl), max(wvl))
+>>> (3465, 157, 2000) 279.178223985 280.697735265
 
->>> import pickle
 
->>> import imp
-
->>> import helita
-
->>> import time
-
->>> cd ~/helita/helita/sim
-
->>> from helita import kmeans as km
