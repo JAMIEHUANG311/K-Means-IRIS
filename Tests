@@ -1,22 +1,32 @@
 Compiling the code on Jupyter Notebook: 
 
-#importing 
-import numpy as np
-import matplotlib.pyplot as plt
-from sklearn.cluster import KMeans
-from sklearn.cluster import MiniBatchKMeans
-import pickle
-import imp
-import helita
-cd ~/helita/helita/sim
-from helita import kmeans as km
+#importing
+[inputs]
+ls
+ipython
+>>> import numpy as np
+>>> import matplotlib.pyplot as plt
+>>> from sklearn.cluster import KMeans
+>>> from sklearn.cluster import MiniBatchKMeans
+>>> import pickle
+>>> import imp
+>>> import helita
+>>> cd ~/helita/helita/sim
+>>> from helita import kmeans as km
 
-interp()
-
-wavelength_distinctions(wvl)
+[inputs]
+>>> interp()
+[outputs]
 >>> 
 
-time_import(tm, inertia, t0)
+[inputs]
+>>> wavelength_distinctions(wvl)
+[outputs]
+>>> 
+
+[inputs]
+>>> time_import(tm, inertia, t0)
+[outputs]
 >>> 
 [ 0.67991989  0.69222255  0.7140973   0.73578895  0.7595834   0.78087571
   0.80576387  0.82754003  0.85294762  0.87864923  0.90112266  0.92541538
@@ -24,7 +34,7 @@ time_import(tm, inertia, t0)
   1.14114233  1.16809347  1.19600678  1.2304258   1.25900163  1.28650182
   1.32420162  1.35239055  1.38216778  1.412889    1.54341631  1.56985948]
 
-create_km_map():
+create_km_map()
 >>> 
 
 create_k_means_maps(self, wvl)
