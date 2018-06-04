@@ -14,7 +14,7 @@
 
    [x] Create a TESTS folder.
 
-     [] Add scripts that shows the tests.
+     [x] Add scripts that shows the tests.
 
 ## Style:
 
@@ -71,8 +71,8 @@
 
 ## Code:
 
-   [] Add other functions that you did. All the functions that does the interpolation,
-   [x] reads the synthetic data, [x] separates between wavelength range etc. See the code 
+   [] Add other functions that you did. All the functions that does the []interpolation,
+   [x] reads the synthetic data, [] separates between wavelength range etc. See the code 
    that you have in helita_old/helita/sim and in cutting... 
 
    [x] Avoid harcoding, e.g., "/net/opal/Volumes/Amnesia/mpi3drun/2Druns/genohm/rain/new_inte1_02.npy.npz"
