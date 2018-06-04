@@ -11,6 +11,8 @@ import helita
 cd ~/helita/helita/sim
 from helita import kmeans as km
 
+
+
 #interpolation of the axis
 interp()
 >>> 
@@ -28,3 +30,4 @@ create_km_map():
 create_k_means_maps(self, wvl)
 
 create_spectral_map(self, i3, wvl, ax)
+#prints spectral map 
