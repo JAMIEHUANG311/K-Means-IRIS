@@ -1,17 +1,30 @@
 Compiling the code on Jupyter Notebook: 
 
+#importing 
 import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.cluster import KMeans
 from sklearn.cluster import MiniBatchKMeans
 import pickle
+import imp
+import helita
+cd ~/helita/helita/sim
+from helita import kmeans as km
 
-data=np.load("/net/opal/Volumes/Amnesia/mpi3drun/2Druns/genohm/rain/new_inte1_02.npy.npz")
-print(data.keys())
-i3=data["arr_0"]
-wvl=data["arr_1"]
+#interpolation of the axis
+interp()
+>>> 
 
-print(i3.shape, min(wvl), max(wvl))
->>> (3465, 157, 2000) 279.178223985 280.697735265
+wavelength_distinctions(wvl)
+>>> 
 
+time_import(self, tm, inertia, t0)
 
+fit(t0)
+
+create_km_map():
+>>> image of the k-means map and
+
+create_k_means_maps(self, wvl)
+
+create_spectral_map(self, i3, wvl, ax)
