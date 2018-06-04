@@ -38,12 +38,15 @@ init = 10
 
 [inputs]
 >>> create_km_map()
->>> 
+[outputs]
+>>> prints the image of the km_map datacube
 
 [inputs]
 >>> create_k_means_maps(self, wvl)
->>>
+[outputs]
+>>> plots the spectral profile for the different k-means labels, wavelength on the x axis and intensity on the y axis
 
 [inputs]
 >>> create_spectral_map(self, i3, wvl, ax)
->>>  
+[outputs]
+>>> creates a spectral profile map showing the location of the clusters in all the labels as a whole
