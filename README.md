@@ -62,9 +62,11 @@ Here are the steps:
 1) Fork the repository.
 2) Develop and test code changes.
 3) Verify that tests pass successfully.
-4) Push to your fork repository
-5) Go to the right of the Branch menu
-6) Select the master branch, and click New pull request.
+4) Start discussion or give feedback 
+5) Look over your changes in the diffs on the Compare page, make sure they’re what you want to submit.
+6) Push to your fork repository
+7) Go to the right of the Branch menu
+8) Select the master branch, and click New pull request.
 
 ## Credits
 Juan Martinez-Sykora, Alberto Sainz-Dalda
