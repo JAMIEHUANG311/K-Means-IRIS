@@ -11,23 +11,24 @@ import helita
 cd ~/helita/helita/sim
 from helita import kmeans as km
 
-
-
-#interpolation of the axis
 interp()
->>> 
 
 wavelength_distinctions(wvl)
 >>> 
 
-time_import(self, tm, inertia, t0)
-
-fit(t0)
+time_import(tm, inertia, t0)
+>>> 
+[ 0.67991989  0.69222255  0.7140973   0.73578895  0.7595834   0.78087571
+  0.80576387  0.82754003  0.85294762  0.87864923  0.90112266  0.92541538
+  0.95132631  0.97874948  1.00587217  1.03581269  1.0820841   1.11190388
+  1.14114233  1.16809347  1.19600678  1.2304258   1.25900163  1.28650182
+  1.32420162  1.35239055  1.38216778  1.412889    1.54341631  1.56985948]
 
 create_km_map():
->>> image of the k-means map and
+>>> 
 
 create_k_means_maps(self, wvl)
+>>>
 
 create_spectral_map(self, i3, wvl, ax)
-#prints spectral map 
+>>>  
