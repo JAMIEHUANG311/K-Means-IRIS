@@ -39,7 +39,7 @@ init = 10
 [inputs]
 >>> create_km_map()
 [outputs]
->>> prints the image of the km_map datacube
+>>> see figures: maps2.png, maps19.png, and maps22.png
 
 [inputs]
 >>> create_k_means_maps(self, wvl)
@@ -49,4 +49,4 @@ init = 10
 [inputs]
 >>> create_spectral_map(self, i3, wvl, ax)
 [outputs]
->>> creates a spectral profile map showing the location of the clusters in all the labels as a whole
+>>> see figure: spectral_map.png
