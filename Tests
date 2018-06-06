@@ -39,14 +39,14 @@ init = 10
 [inputs]
 >>> create_km_map()
 [outputs]
->>> see figures: maps2.png, maps19.png, and maps22.png
+>>> #see figures: maps2.png, maps19.png, and maps22.png
 
 [inputs]
 >>> create_k_means_maps(self, wvl)
 [outputs]
->>> plots the spectral profile for the different k-means labels, wavelength on the x axis and intensity on the y axis
+>>> #see figures: prof2.png, prof19.png, and prof22.png
 
 [inputs]
 >>> create_spectral_map(self, i3, wvl, ax)
 [outputs]
->>> see figure: spectral_map.png
+>>> #see figure: spectral_map.jpg
