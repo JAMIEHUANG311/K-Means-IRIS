@@ -15,12 +15,6 @@ ipython
 >>> from helita import kmeans as km
 
 [inputs]
->>> __init__
-
-[inputs]
->>> interp()
-
-[inputs]
 >>> time_import(tm, inertia, t0)
 [outputs]
 >>> 
@@ -32,9 +26,6 @@ init = 10
  0.95132631  0.97874948  1.00587217  1.03581269  1.0820841   1.11190388
  1.14114233  1.16809347  1.19600678  1.2304258   1.25900163  1.28650182
  1.32420162  1.35239055  1.38216778  1.412889    1.54341631  1.56985948]
-
-[inputs]
->>> fit(t0)
 
 [inputs]
 >>> create_km_map()
