@@ -30,14 +30,14 @@ init = 10
 [inputs]
 >>> create_km_map()
 [outputs]
->>> #see figures: maps2.png, maps19.png, and maps22.png
+>>> #see figures: maps2.png, maps19.png, and maps22.png in images folder
 
 [inputs]
 >>> create_k_means_maps(self, wvl)
 [outputs]
->>> #see figures: prof2.png, prof19.png, and prof22.png
+>>> #see figures: prof2.png, prof19.png, and prof22.png in images folder
 
 [inputs]
 >>> create_spectral_map(self, i3, wvl, ax)
 [outputs]
->>> #see figure: spectral_map.jpg
+>>> #see figure: spectral_map.jpg in images folder
