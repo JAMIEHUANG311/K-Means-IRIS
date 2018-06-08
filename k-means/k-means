@@ -63,9 +63,9 @@ class kmeans():
 
 		count = 0
 		for ind in range(0, np.size(self.limits)-1):
-			if self.limits[ind+1]-self.limits[ind]>1:
+			if self.limits[ind+1]-self.limits[ind] > 1:
 				self.new_inte[count] = inte[:, :, self.limits[ind]:self.limits[ind+1]-1] # var
-				count+=1
+				count = count + 1
 
 	def interp(self, mindelwvl):
 		'''
@@ -87,15 +87,16 @@ class kmeans():
 				print(n_points, mindelwvl, np.shape(wvlAx[count]))
 				inte1 = np.zeros((inte.shape[0], inte.shape[1], np.shape(wvlAx[count])[0]))
 				print(inte.shape[0], inte.shape[1], np.shape(inte1))
-				print('wvl',np.shape(wvlAx[count]),np.min(wvlAx[count]),np.max(wvlAx[count]), 
-							np.min(wvl[self.limits[ind]:self.limits[ind+1]-1]),np.max(wvl[self.limits[ind]:self.limits[ind+1]-1]))
+				print('wvl', np.shape(wvlAx[count]), np.min(wvlAx[count]), np.max(wvlAx[count]),
+							   np.min(wvl[self.limits[ind]:self.limits[ind+1]-1]),
+							   np.max(wvl[self.limits[ind]:self.limits[ind+1]-1]))
 
 
-
-				for ind2 in range(0, len(new_inte[count][:,0,0])):
-					print('ind2=',ind2)
-					for ind3 in range(0, len(new_inte[count][0,:,0])):
-						ind3[index,inde,:] = np.interp(wvlAx[count], wvl[self.limits[ind]:self.limits[ind3+1]-1], new_inte[count][ind2, ind3, :])
+				for ind2 in range(0, len(new_inte[count][:, 0, 0])):
+					print('ind2=', ind2)
+					for ind3 in range(0, len(new_inte[count][0, :, 0])):
+						ind3[index,inde,:] = np.interp(wvlAx[count], 
+							wvl[self.limits[ind]:self.limits[ind3+1]-1], new_inte[count][ind2, ind3, :])
 
 				new_inte1[count] = inte1
 				print('new_inte1',count,np.shape(new_inte1[count]))
