@@ -10,12 +10,12 @@
 	def __init__(self, data, i3, wvl, create_spectral_map,
 				create_km_map, create_k-means_maps,
 				time_import, verbose = true):
-   		'''
-    	initializes variables
-    	''' 
+  		'''
+		initializes variables tests
+		''' 
 
-    	if verbose:
-    		print("True")
+		if verbose:
+			print("True")
     		self.create_spectral_map = create_spectral_map
     		self.create_data_cube = create_data_cube
     		self.k-means_maps = k-means_maps
