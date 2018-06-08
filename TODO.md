@@ -55,9 +55,13 @@
 
    [x] Complete README.md with: 
 
-      [x python libraries used
+      [] python libraries used (are still missing)
 
       [x] helita, how to get it and setup
+      
+	[] This is also missing
+
+   [] remove ls line in the README.md. 
 
    [x] Do the intro more generic: 
       	 This code allows to read RH (in netCDF format) profiles. 
@@ -70,6 +74,8 @@
      various sections.
 
 ## Code:
+
+   [] Remindme that we go through the kmean.py code together. 
 
    [] Add other functions that you did. All the functions that does the []interpolation,
    [x] reads the synthetic data, [] separates between wavelength range etc. See the code 
