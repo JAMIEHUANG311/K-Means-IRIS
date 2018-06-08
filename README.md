@@ -19,7 +19,6 @@ In order to run the code, enter this on terminal or Jupyter Notebook:
 
 python
 ***
-ls
 
 ipython
 
