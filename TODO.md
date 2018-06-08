@@ -61,7 +61,7 @@
       
 	[] This is also missing
 
-   [] remove ls line in the README.md. 
+   [x] remove ls line in the README.md. 
 
    [x] Do the intro more generic: 
       	 This code allows to read RH (in netCDF format) profiles. 
