@@ -38,23 +38,9 @@ ipython
 
 >>> import helita
 
->>> cd ~/helita/helita/sim
+>>> cd ~/k-means/K-Means-IRIS/k-means
 
 >>> from helita import kmeans as km
-
->>> __init__
-
->>> interp()
-
->>> time_import(tm, inertia, t0)
-
->>> fit(t0)
-
->>> create_km_map()
-
->>> create_k_means_maps(self, wvl)
-
->>> create_spectral_map(self, i3, wvl, ax)
 
 ## Contributing
 If you would like to improve the code or report a bug, your help is welcomed. 
