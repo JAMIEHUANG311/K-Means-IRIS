@@ -12,6 +12,8 @@ Works on MacOS, Linux, and Windows.
 
 3) Use Terminal to compile and run the code
 
+Python libraries used: iPython, matplotlib, scipy, numpy
+
 Requires Python 3.0 or higher.
 
 ## Usage
