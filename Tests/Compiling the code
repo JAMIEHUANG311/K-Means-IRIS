@@ -11,7 +11,7 @@ ipython
 >>> from scipy.ndimage.interpolation import shift
 >>> import pickle
 >>> import time
->>> cd ~/helita/helita/sim
+>>> cd ~/helita/helita/sim/k-means
 >>> from helita import kmeans as km
 
 [inputs]
