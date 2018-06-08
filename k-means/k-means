@@ -9,8 +9,8 @@ import time
 class kmeans():
 
 	def __init__(self, data, i3, wvl, create_spectral_map,
-		          create_km_map, create_kmeans_maps,
-				time_import, verbose = True):
+		            create_km_map, create_kmeans_maps,
+				          time_import, verbose=True):
 		'''
 		initializes variables tests
 		'''
@@ -24,7 +24,8 @@ class kmeans():
 		self.i3 = i3
 
 	def read_data(self, rbfilename='output_ray_l2d90x40r.ncdf',
-		         npzfilename="/net/opal/Volumes/Amnesia/mpi3drun/2Druns/genohm/rain/new_inte1_02.npy.npz"):
+		             npzfilename=
+		             "/net/opal/Volumes/Amnesia/mpi3drun/2Druns/genohm/rain/new_inte1_02.npy.npz"):
 		'''
 		reads data, loads data, saves the loading of the data
 		'''
@@ -48,22 +49,22 @@ class kmeans():
 		delwvl = wvl-shift(wvl, 1)
 		new_delwvl = shift(wvl, -1) - wvl
 		self.limits = [v for v in range(1, len(delwvl)) if np.abs(
-								   delwvl[v]-new_delwvl[v]) > delta]
+								            delwvl[v]-new_delwvl[v]) > delta]
 		self.limits.append(len(wvl))
 
-	def individual_spectral_data(self,delta=5):
+	def individual_spectral_data(self, delta=5):
 		'''
 		The profile at inte is added to the array new_inte
 		'''
 		self.new_inte = {}
 
-		if not hasattr(self,'limits'):
+		if not hasattr(self, 'limits'):
 			self.wavelength_distinction(delta)
 
 		count = 0
 		for ind in range(0, np.size(self.limits)-1):
-			if(self.limits[ind+1]-self.limits[ind]>1):
-				self.new_inte[count] = inte[:,:,self.limits[ind]:self.limits[ind+1]-1] # var
+			if self.limits[ind+1]-self.limits[ind]>1:
+				self.new_inte[count] = inte[:, :, self.limits[ind]:self.limits[ind+1]-1] # var
 				count+=1
 
 	def interp(self, mindelwvl):
@@ -76,13 +77,13 @@ class kmeans():
 		self.new_inte1 = {}
 		self.wvlAx = {}
 		for ind in range(0, np.size(self.limits)-1):
-			if self.limits[ind+1]-self.limits[ind] >1:
+			if self.limits[ind+1]-self.limits[ind] > 1:
 				print(wvl[self.limits[ind]], self.limits[ind+1])
 				mindelwvl = np.min(delwvl[self.limits[ind]:self.limits[ind+1]-1])
 				n_points = np.min(((np.max(wvl)-np.min(wvl))/mindelwvl, 3000))
 				max_value = np.max(wvl[self.limits[ind]:self.limits[ind+1]-1])
 				min_value = np.min(wvl[self.limits[ind]:self.imits[ind+1]-1])
-				wvlAx[count] = np.linspace(min_value, max_value, num = n_points)
+				wvlAx[count] = np.linspace(min_value, max_value, num=n_points)
 				print(n_points, mindelwvl, np.shape(wvlAx[count]))
 				inte1 = np.zeros((inte.shape[0], inte.shape[1], np.shape(wvlAx[count])[0]))
 				print(inte.shape[0], inte.shape[1], np.shape(inte1))
