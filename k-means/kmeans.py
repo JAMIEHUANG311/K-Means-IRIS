@@ -13,9 +13,9 @@ class kmeans():
 		            create_km_map, create_kmeans_maps,
 				          time_import, verbose=True):
 		'''
-			initializes variables tests
-			'''
-
+		initializes variables tests
+		'''
+		
 		if verbose:
 		          print("True")
 
