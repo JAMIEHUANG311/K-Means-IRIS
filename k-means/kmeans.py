@@ -9,21 +9,21 @@ from scipy.ndimage.interpolation import shift
 
 class kmeans():
 
-    def __init__(self, data, i3, wvl, create_spectral_map,
+	def __init__(self, data, i3, wvl, create_spectral_map,
 		            create_km_map, create_kmeans_maps,
 				          time_import, verbose=True):
-        '''
-		initializes variables tests
 		'''
+			initializes variables tests
+			'''
 
-    	# if verbose:
-  	  #         print("True")
+		# if verbose:
+		  #         print("True")
 
-        self.create_spectral_map = create_spectral_map
-        self.create_data_cube = create_data_cube
-        self.k_means_maps = k_means_maps
-        self.create_kmeans_maps = create_kmeans_maps
-        self.i3 = i3
+		self.create_spectral_map = create_spectral_map
+		self.create_data_cube = create_data_cube
+		self.k_means_maps = k_means_maps
+		self.create_kmeans_maps = create_kmeans_maps
+		self.i3 = i3
 
 	def read_data(self, rbfilename='output_ray_l2d90x40r.ncdf',
 		             npzfilename=
