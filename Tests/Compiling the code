@@ -4,12 +4,11 @@ cd ~/k-means/K-Means-IRIS/k-means
 ipython
 In [1]: import kmeans as km
 
-In []: import imp
+In [2]: dp = km.KMeans()
 
-In []: imp.reload(km)
-Out[]: <module 'kmeans' from '/Users/huang/k-means/K-Means-IRIS/k-means/kmeans.py'>
+In [3]: import imp
 
-In []: dp = km.KMeans()
-True
+In [4]: imp.reload(km)
+Out[4]: <module 'kmeans' from '/Users/huang/k-means/K-Means-IRIS/k-means/kmeans.py'>
 
 In []: 
