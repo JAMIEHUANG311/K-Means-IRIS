@@ -16,8 +16,8 @@ class kmeans():
 			initializes variables tests
 			'''
 
-		# if verbose:
-		  #         print("True")
+		if verbose:
+		          print("True")
 
 		self.create_spectral_map = create_spectral_map
 		self.create_data_cube = create_data_cube
