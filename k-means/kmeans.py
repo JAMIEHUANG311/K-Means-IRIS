@@ -19,7 +19,7 @@ class kmeans():
 		# if verbose:
 		  #         print("True")
 
-		self.create_spectral_map = create_spectral_map
+	        self.create_spectral_map = create_spectral_map
 		self.create_data_cube = create_data_cube
 		self.k_means_maps = k_means_maps
 		self.create_kmeans_maps = create_kmeans_maps
