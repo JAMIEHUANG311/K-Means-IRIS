@@ -5,10 +5,34 @@ ipython
 In [1]: import kmeans as km
 
 In [2]: dp = km.KMeans()
+True
 
 In [3]: import imp
 
 In [4]: imp.reload(km)
 Out[4]: <module 'kmeans' from '/Users/huang/k-means/K-Means-IRIS/k-means/kmeans.py'>
 
-In []: 
+In [5]: dp.__init__()
+True
+
+In [6]: dp.read_data_npz(npzfilename="/net/opal/Volumes/Amnesia/mpi3drun/2Druns/genohm/rain/new_inte1_02.npy.npz")
+
+In [7]: dp.read_data_ncdf(rbfilename='output_ray_l2d90x40r.ncdf')
+
+In [8]: dp.read_data_pck(kmeansfilename='k-means.pck')
+
+In [9]: dp.wavelength_distinction()
+
+In [10]: dp.individual_spectral_data()
+
+In [11]: dp.interp()
+
+In [12]: dp.time_import()
+
+In [13]: dp.mini_batch_fit()
+
+In [14]: dp.create_km_map()
+
+In [15]: dp.create_k_means_maps()
+
+In [16]: dp.create_spectral_map()
