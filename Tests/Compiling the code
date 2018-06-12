@@ -1,52 +1,17 @@
 Compiling the code
 
-#importing
-[inputs]
-
+cd ~/k-means/K-Means-IRIS/k-means
 ipython
->>>	import numpy as np
->>> import matplotlib.pyplot as plt
->>> from sklearn.cluster import KMeans
->>> from sklearn.cluster import MiniBatchKMeans
->>> from scipy.ndimage.interpolation import shift
->>> import pickle
->>> import time
->>> cd ~/helita/helita/sim/k-means
->>> from helita import kmeans as km
+In [1]: import kmeans as km
 
-[inputs]
->>> wavelength_distinction(self, delt = 5)
+In [2]: db = km.Kmeans()
 
-[inputs]
->>> interp()
+In [3]: import imp
 
-[inputs]
->>> time_import(tm, inertia, t0)
-[outputs]
->>> 
-time = 77.54004096984863
-inertia = 5.28015260381e-11
-init = 10
-[0.67991989  0.69222255  0.7140973   0.73578895  0.7595834   0.78087571
- 0.80576387  0.82754003  0.85294762  0.87864923  0.90112266  0.92541538
- 0.95132631  0.97874948  1.00587217  1.03581269  1.0820841   1.11190388
- 1.14114233  1.16809347  1.19600678  1.2304258   1.25900163  1.28650182
- 1.32420162  1.35239055  1.38216778  1.412889    1.54341631  1.56985948]
+In [4]: imp.reload(km)
+Out[4]: <module 'kmeans' from '/Users/huang/k-means/K-Means-IRIS/k-means/kmeans.py'>
 
-[inputs]
->>> create_km_map()
-[outputs]
->>> #see figures: maps2.png, maps19.png, and maps22.png in images folder
+In [5]: dp = km.KMeans()
+True
 
-[inputs]
->>> mini_batch_fit(self, t0)
-
-[inputs]
->>> create_k_means_maps(self, wvl)
-[outputs]
->>> #see figures: prof2.png, prof19.png, and prof22.png in images folder
-
-[inputs]
->>> create_spectral_map(self, i3, wvl, ax)
-[outputs]
->>> #see figure: spectral_map.jpg in images folder
+In [6]: 
