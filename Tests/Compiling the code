@@ -26,6 +26,9 @@ In [7]: dp.wavelength_distinction()
 In [8]: dp.individual_spectral_data()
 
 In [9]: dp.interp()
+279.263359184 116
+0.54268259997 2.8 (0,)
+3465 157 (3465, 157, 0)
 
 In [10]: dp.time_import()
 
