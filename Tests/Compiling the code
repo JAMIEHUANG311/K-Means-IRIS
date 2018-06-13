@@ -17,8 +17,6 @@ True
 
 In [6]: dp.read_data_npz(npzfilename="/net/opal/Volumes/Amnesia/mpi3drun/2Druns/genohm/rain/new_inte1_02.npy.npz")
 
-In [7]: dp.read_data_ncdf(rbfilename='output_ray_l2d90x40r.ncdf')
-
 In [9]: dp.wavelength_distinction()
 
 In [10]: dp.individual_spectral_data()
