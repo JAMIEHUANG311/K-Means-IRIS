@@ -23,6 +23,12 @@ class KMeans():
         if verbose:
             print("True")
 
+    #def read_lim_interp()
+    #    self.read_data_npz....
+    #    self.wavelength_distinction...
+    #    self.individual_spectral_data...
+    #    self.interp....
+
     def read_data_npz(self, npzfilename="/net/opal/Volumes/Amnesia/mpi3drun/2Druns/genohm/rain/new_inte1_02.npy.npz"):
         '''
         reads data, loads data, saves the loading of the data
@@ -34,15 +40,15 @@ class KMeans():
         print("True")
 
     def read_data_ncdf(self, rbfilename='output_ray_l2d90x40r.ncdf'):
-        self.wvl1=nd.getvar(rbfilename,'wavelength')
+        self.wvl1 = nd.getvar(rbfilename,'wavelength')
         self.inte = nd.getvar(rbfilename, 'intensity', memmap=True)
         print("True")
 
-    # def read_data_pck(self, kmeansfilename='k-means.pck'):
-    #     pick_in = open(kmeansfilename, 'rb')
-    #     self.k_m = pickle.load(pick_in)
+    def read_data_pck(self, kmeansfilename='k-means.pck'):
+        pick_in = open(kmeansfilename, 'rb')
+        self.k_m = pickle.load(pick_in)
 
-    def wavelength_distinction(self, wvl1, delta=5):
+    def wavelength_distinction(self, delta=5):
         '''
         This allows to cut the wavelength range in different spectral lines.
         Find where the value of delwvl is larger than the previous index
@@ -52,9 +58,9 @@ class KMeans():
         '''
 
         delwvl = self.wvl1-shift(self.wvl1, 1)
-        new_delwvl = shift(self.wvl1, -1) - wvl1
+        new_delwvl = shift(self.wvl1, -1) - self.wvl1
         self.limits = [v for v in range(1, len(delwvl)) if np.abs(delwvl[v]-new_delwvl[v]) > delta]
-        self.limits.append(len(wvl1))
+        self.limits.append(len(self.wvl1))
 
     def individual_spectral_data(self, delta=5):
         '''
@@ -69,42 +75,45 @@ class KMeans():
         count = 0
         for ind in range(0, np.size(self.limits)-1):
             if self.limits[ind+1]-self.limits[ind] > 1:
-                self.new_inte[count] = inte[:, :, self.limits[ind]:self.limits[ind+1]-1] # var
+                self.new_inte[count] = self.inte[:, :, self.limits[ind]:self.limits[ind+1]-1] # var
                 count = count + 1
 
-    def interp(self, wvl, mindelwvl, delwvl):
+    def interp(self):
         '''
         interpolation of the axis
         plots wvl against new_inte in an uniform axis(wvlax)
         '''
 
+        delwvl = self.wvl1-shift(self.wvl1, 1)
         count = 0
         self.new_inte1 = {}
         self.wvlax = {}
         for ind in range(0, np.size(self.limits)-1):
             if self.limits[ind+1]-self.limits[ind] > 1:
-                print(wvl[self.limits[ind]], self.limits[ind+1])
+                print(self.wvl[self.limits[ind]], self.limits[ind+1])
                 mindelwvl = np.min(delwvl[self.limits[ind]:self.limits[ind+1]-1])
-                n_points = np.min(((np.max(wvl)-np.min(wvl))/mindelwvl, 3000))
-                max_value = np.max(wvl[self.limits[ind]:self.limits[ind+1]-1])
-                min_value = np.min(wvl[self.limits[ind]:self.limits[ind+1]-1])
-                self.wvlax[count] = np.linspace(min_value, max_value, num=n_points)
-                print(n_points, mindelwvl, np.shape(self.wvlax[count]))
-                inte1 = np.zeros((self.inte.shape[0],
-                                  self.inte.shape[1], np.shape(self.wvlax[count])[0]))
-                print(self.inte.shape[0], self.inte.shape[1], np.shape(inte1))
-                print('wvl', np.shape(self.wvlax[count]),
-                      np.min(self.wvlax[count]), np.max(self.wvlax[count]),
-                      np.min(wvl[self.limits[ind]:self.limits[ind+1]-1]),
-                      np.max(wvl[self.limits[ind]:self.limits[ind+1]-1]))
+                n_points = np.min(((np.max(self.wvl)-np.min(self.wvl))/mindelwvl, 3000))
+                
+                if (n_points>5)
+                    max_value = np.max(self.wvl[self.limits[ind]:self.limits[ind+1]-1])
+                    min_value = np.min(self.wvl[self.limits[ind]:self.limits[ind+1]-1])
+                    self.wvlax[count] = np.linspace(min_value, max_value, num=n_points)
+                    print(n_points, mindelwvl, np.shape(self.wvlax[count]))
+                    inte1 = np.zeros((self.inte.shape[0],
+                                      self.inte.shape[1], np.shape(self.wvlax[count])[0]))
+                    print(self.inte.shape[0], self.inte.shape[1], np.shape(inte1))
+                    print('wvl', np.shape(self.wvlax[count]),
+                          np.min(self.wvlax[count]), np.max(self.wvlax[count]),
+                          np.min(self.wvl[self.limits[ind]:self.limits[ind+1]-1]),
+                          np.max(self.wvl[self.limits[ind]:self.limits[ind+1]-1]))
 
-                for ind2 in range(0, len(self.new_inte[count][:, 0, 0])):
-                    print('ind2=', ind2)
-                    for ind3 in range(0, len(self.new_inte[count][0, :, 0])):
-                        ind3[ind2, ind3, :] = np.interp(self.wvlax[count],
-                                                        wvl[self.limits[ind]:
-                                                            self.limits[ind3+1]-1],
-                                                        self.new_inte[count][ind2, ind3, :])
+                    for ind2 in range(0, len(self.new_inte[count][:, 0, 0])):
+                        print('ind2=', ind2)
+                        for ind3 in range(0, len(self.new_inte[count][0, :, 0])):
+                            ind3[ind2, ind3, :] = np.interp(self.wvlax[count],
+                                                            self.wvl[self.limits[ind]:
+                                                                self.limits[ind3+1]-1],
+                                                            self.new_inte[count][ind2, ind3, :])
 
                 self.new_inte1[count] = inte1
                 print('new_inte1', count, np.shape(self.new_inte1[count]))
@@ -139,7 +148,7 @@ class KMeans():
         plt.plot(inertia)
         plt.show()
 
-    def mini_batch_fit(self, t_zero):
+    def mini_batch_fit(self):
         '''
         uses the MiniBatchKMeans function to fit the i3_2d data into clusters
         inputs: t0
@@ -160,7 +169,7 @@ class KMeans():
         outputs: prints the image of the km_map datacube
         '''
 
-        dim_i_3 = np.shape(i_3)
+        dim_i_3 = np.shape(self.i_3)
 
         plt.figure(figsize=(33, 33))
         km_map_datacube = np.zeros((dim_i_3[0], dim_i_3[1], 30))
@@ -177,7 +186,7 @@ class KMeans():
             plt.show()
 
 
-    def create_k_means_maps(self, wvl):
+    def create_profiles(self):
         '''
         creates the k_means maps
         plots the spectral profile for the different k-means labels
@@ -185,6 +194,7 @@ class KMeans():
         inputs: wvl, outputs: prints the image of the k-means labels
         '''
 
+        wvl = self.data["arr_1"]
         plt.figure(figsize=(30, 30))
         for i in range(0, 30):
             plt.subplot(5, 6, i+1)
@@ -193,7 +203,7 @@ class KMeans():
             plt.plot(wvl*10.-2795.37, self.k_m.cluster_centers_[i, 0:2000]*1e3/3.454e-6)
         plt.show()
 
-    def create_spectral_map(self, wvl):
+    def create_spectral_map(self):
         '''
         reshapes into 2D array
         interpolation
@@ -203,7 +213,7 @@ class KMeans():
         location of the clusters in all the labels as a whole
         inputs: i3, wvl, ax, outputs: prints the image of the spectral map
         '''
-
+        wvl = self.data["arr_1"]
         wvl_new = wvl*10.-2795.37
         plt.subplots_adjust(bottom=0.2, top=.9, left=0.15)
         plt.imshow(self.i_3[0, :, :], aspect='auto',
