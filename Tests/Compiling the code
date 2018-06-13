@@ -17,18 +17,18 @@ True
 
 In [6]: dp.read_data_npz(npzfilename="/net/opal/Volumes/Amnesia/mpi3drun/2Druns/genohm/rain/new_inte1_02.npy.npz")
 
-In [9]: dp.wavelength_distinction()
+In [7]: dp.wavelength_distinction()
 
-In [10]: dp.individual_spectral_data()
+In [8]: dp.individual_spectral_data()
 
-In [11]: dp.interp()
+In [9]: dp.interp()
 
-In [12]: dp.time_import()
+In [10]: dp.time_import()
 
-In [13]: dp.mini_batch_fit()
+In [11]: dp.mini_batch_fit()
 
-In [14]: dp.create_km_map()
+In [12]: dp.create_km_map()
 
-In [15]: dp.create_k_means_maps()
+In [13]: dp.create_k_means_maps()
 
-In [16]: dp.create_spectral_map()
+In [14]: dp.create_spectral_map()
