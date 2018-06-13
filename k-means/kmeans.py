@@ -1,7 +1,7 @@
 '''
 This allows to handle something
 '''
-import pickle
+# import pickle
 import time
 import numpy as np
 import matplotlib.pyplot as plt
@@ -10,9 +10,12 @@ from sklearn.cluster import MiniBatchKMeans
 from scipy.ndimage.interpolation import shift
 import helita.io.ncdf as nd
 
-class Kmeans():
+class KMeans():
+    '''
+    This is the class
+    '''
 
-    def __init__(self, k_means_maps, create_kmeans_maps, verbose=True):
+    def __init__(self, verbose=True):
         '''
         initializes variables tests
         '''
@@ -20,29 +23,26 @@ class Kmeans():
         if verbose:
             print("True")
 
-        # self.create_spectral_map = create_spectral_map
-        self.k_means_maps = k_means_maps
-        self.create_kmeans_maps = create_kmeans_maps
-
-        # self.i3 = i3
-
-    def read_data_npz(self, rbfilename='output_ray_l2d90x40r.ncdf'):
+    def read_data_npz(self, npzfilename="/net/opal/Volumes/Amnesia/mpi3drun/2Druns/genohm/rain/new_inte1_02.npy.npz"):
         '''
         reads data, loads data, saves the loading of the data
         '''
 
+        self.data = np.load(npzfilename)
         self.i_3 = self.data["arr_0"]
         self.wvl = self.data["arr_1"]
+        print("True")
 
-    def read_data_ncdf(self, npzfilename="/net/opal/Volumes/Amnesia/mpi3drun/2Druns/genohm/rain/new_inte1_02.npy.npz"): 
-        inte = nd.getvar(filename, 'intensity', memmap=True
-        self.data = np.load(npzfilename)
+    def read_data_ncdf(self, rbfilename='output_ray_l2d90x40r.ncdf'):
+        self.wvl1=nd.getvar(rbfilename,'wavelength')
+        self.inte = nd.getvar(rbfilename, 'intensity', memmap=True)
+        print("True")
 
-    def read_data_pck(kmeansfilename='k-means.pck'): 
-        pick_in = open(kmeansfilename, 'rb')
-        self.k_m = pickle.load(pick_in)
+    # def read_data_pck(self, kmeansfilename='k-means.pck'):
+    #     pick_in = open(kmeansfilename, 'rb')
+    #     self.k_m = pickle.load(pick_in)
 
-    def wavelength_distinction(self, wvl, delta=5):
+    def wavelength_distinction(self, wvl1, delta=5):
         '''
         This allows to cut the wavelength range in different spectral lines.
         Find where the value of delwvl is larger than the previous index
@@ -51,16 +51,16 @@ class Kmeans():
         in limits has a greater difference than 1 than the previous index.
         '''
 
-        delwvl = wvl-shift(wvl, 1)
-        new_delwvl = shift(wvl, -1) - wvl
-        self.limits = [v for v in range(1, len(delwvl)) if np.abs(
-            delwvl[v]-new_delwvl[v]) > delta]
-        self.limits.append(len(wvl))
+        delwvl = self.wvl1-shift(self.wvl1, 1)
+        new_delwvl = shift(self.wvl1, -1) - wvl1
+        self.limits = [v for v in range(1, len(delwvl)) if np.abs(delwvl[v]-new_delwvl[v]) > delta]
+        self.limits.append(len(wvl1))
 
-    def individual_spectral_data(self, filename='output_ray_l2d90x40r.ncdf', delta=5):
+    def individual_spectral_data(self, delta=5):
         '''
         The profile at inte is added to the array new_inte
         '''
+
         self.new_inte = {}
 
         if not hasattr(self, 'limits'):
@@ -72,7 +72,7 @@ class Kmeans():
                 self.new_inte[count] = inte[:, :, self.limits[ind]:self.limits[ind+1]-1] # var
                 count = count + 1
 
-    def interp(self, wvl, mindelwvl, delwvl, filename='output_ray_l2d90x40r.ncdf'):
+    def interp(self, wvl, mindelwvl, delwvl):
         '''
         interpolation of the axis
         plots wvl against new_inte in an uniform axis(wvlax)
@@ -90,13 +90,13 @@ class Kmeans():
                 min_value = np.min(wvl[self.limits[ind]:self.limits[ind+1]-1])
                 self.wvlax[count] = np.linspace(min_value, max_value, num=n_points)
                 print(n_points, mindelwvl, np.shape(self.wvlax[count]))
-                inte1 = np.zeros((inte.shape[0], inte.shape[1], np.shape(self.wvlax[count])[0]))
-                print(inte.shape[0], inte.shape[1], np.shape(inte1))
+                inte1 = np.zeros((self.inte.shape[0],
+                                  self.inte.shape[1], np.shape(self.wvlax[count])[0]))
+                print(self.inte.shape[0], self.inte.shape[1], np.shape(inte1))
                 print('wvl', np.shape(self.wvlax[count]),
-                			   np.min(self.wvlax[count]), np.max(self.wvlax[count]),
+                      np.min(self.wvlax[count]), np.max(self.wvlax[count]),
                       np.min(wvl[self.limits[ind]:self.limits[ind+1]-1]),
                       np.max(wvl[self.limits[ind]:self.limits[ind+1]-1]))
-
 
                 for ind2 in range(0, len(self.new_inte[count][:, 0, 0])):
                     print('ind2=', ind2)
@@ -114,12 +114,13 @@ class Kmeans():
 
                 count += 1
 
-    def time_import(self, inertia, t_zero, t_m):
+    def time_import(self):
         '''
         uses the MiniBatchKMeans function to fit the i3_2d data into clusters
             computes the inertia of the MiniBatchKMeans
         inputs: t_m, inertia, t0, outputs:
         '''
+
         i3_2d = self.i_3.reshape((self.i_3.shape[0]*self.i_3.shape[1], self.i_3.shape[2]))
 
         self.t_m = np.zeros(30)
@@ -152,15 +153,16 @@ class Kmeans():
         print("init = ", mini_km.n_init)
 
 
-    def create_km_map(self, xxx, yyy, www):
+    def create_km_map(self):
         '''
         creates the image of the km_map_datacube
         shows the locations of the k-means clusters for each labels
         outputs: prints the image of the km_map datacube
         '''
 
+        dim_i_3 = np.shape(i_3)
+
         plt.figure(figsize=(33, 33))
-        dim_i_3 = self.i_3.shape
         km_map_datacube = np.zeros((dim_i_3[0], dim_i_3[1], 30))
 
         for i in range(0, 30):
