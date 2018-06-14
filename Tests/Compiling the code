@@ -12,27 +12,16 @@ In [3]: import imp
 In [4]: imp.reload(km)
 Out[4]: <module 'kmeans' from '/Users/huang/k-means/K-Means-IRIS/k-means/kmeans.py'>
 
-In [6]: dp.read_data_npz(npzfilename="/net/opal/Volumes/Amnesia/mpi3drun/2Druns/genohm/rain/new_inte1_02.npy.npz")
+In [5]: dp.read_lim_interp()
 
-In []: dp.read_data_ncdf(rbfilename='/net/opal/Volumes/Amnesia/mpi3drun/2Druns/genohm/rain/output_ray_l2d90x40r.ncdf')
+In [6]: dp.read_data_pck(kmeansfilename='/net/opal/Volumes/Amnesia/mpi3drun/2Druns/genohm/rain/k-means.pck')
 
-In []: dp.read_data_pck(kmeansfilename='/net/opal/Volumes/Amnesia/mpi3drun/2Druns/genohm/rain/k-means.pck')
+In [7]: dp.time_import()
 
-In [7]: dp.wavelength_distinction()
+In [8]: dp.mini_batch_fit()
 
-In [8]: dp.individual_spectral_data()
+In [9]: dp.create_km_map()
 
-In [9]: dp.interp()
-279.263359184 116
-0.54268259997 2.8 (0,)
-3465 157 (3465, 157, 0)
+In [10]: dp.create_k_means_maps()
 
-In [10]: dp.time_import()
-
-In [11]: dp.mini_batch_fit()
-
-In [12]: dp.create_km_map()
-
-In [13]: dp.create_k_means_maps()
-
-In [14]: dp.create_spectral_map()
+In [11]: dp.create_spectral_map()
