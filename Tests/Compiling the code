@@ -18,6 +18,13 @@ In [6]: dp.read_data_pck(kmeansfilename='/Users/huang/helita/helita/sim/k-means.
 
 In [7]: dp.read_lim_interp()
 
+True
+144.9 116
+298.90567167 2.8 (298,)
+3465 157 (3465, 157, 298)
+wvl (298,) 144.9 166.1 144.9 166.1
+new_inte1 0 (3465, 157, 298)
+
 In [7]: dp.time_import()
 
 [ 1.3123651   1.01260231  0.9270117   0.89610145  0.88702826  0.93067157
