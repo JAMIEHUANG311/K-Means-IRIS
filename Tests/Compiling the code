@@ -12,9 +12,6 @@ In [3]: import imp
 In [4]: imp.reload(km)
 Out[4]: <module 'kmeans' from '/Users/huang/k-means/K-Means-IRIS/k-means/kmeans.py'>
 
-In [5]: dp.__init__()
-True
-
 In [6]: dp.read_data_npz(npzfilename="/net/opal/Volumes/Amnesia/mpi3drun/2Druns/genohm/rain/new_inte1_02.npy.npz")
 
 In []: dp.read_data_ncdf(rbfilename='/net/opal/Volumes/Amnesia/mpi3drun/2Druns/genohm/rain/output_ray_l2d90x40r.ncdf')
