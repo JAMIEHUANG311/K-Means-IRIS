@@ -30,6 +30,6 @@ In [8]: dp.mini_batch_fit()
 
 In [9]: dp.create_km_map()
 
-In [10]: dp.create_k_means_maps()
+In [10]: dp.create_profiles()
 
 In [11]: dp.create_spectral_map()
