@@ -16,6 +16,8 @@ In [5]: dp.read_data_npz(npzfilename='/net/opal/Volumes/Amnesia/mpi3drun/2Druns/
 
 In [6]: dp.read_data_pck(kmeansfilename='/Users/huang/helita/helita/sim/k-means.pck')
 
+In [7]: read_data_ncdf(self, rbfilename='/net/opal/Volumes/Amnesia/mpi3drun/2Druns/genohm/rain/output_ray_l2d90x40r.ncdf')
+
 In [7]: dp.read_lim_interp()
 
 True
