@@ -16,9 +16,9 @@ In [5]: dp.read_data_npz(npzfilename='/net/opal/Volumes/Amnesia/mpi3drun/2Druns/
 
 In [6]: dp.read_data_pck(kmeansfilename='/Users/huang/helita/helita/sim/k-means.pck')
 
-In [7]: read_data_ncdf(self, rbfilename='/net/opal/Volumes/Amnesia/mpi3drun/2Druns/genohm/rain/output_ray_l2d90x40r.ncdf')
+In [7]: dp.read_data_ncdf(rbfilename='/net/opal/Volumes/Amnesia/mpi3drun/2Druns/genohm/rain/output_ray_l2d90x40r.ncdf')
 
-In [7]: dp.read_lim_interp()
+In [8]: dp.read_lim_interp()
 
 True
 144.9 116
@@ -27,7 +27,7 @@ True
 wvl (298,) 144.9 166.1 144.9 166.1
 new_inte1 0 (3465, 157, 298)
 
-In [7]: dp.time_import()
+In [9]: dp.time_import()
 
 [ 1.3123651   1.01260231  0.9270117   0.89610145  0.88702826  0.93067157
   0.93137071  0.93967343  0.99840955  1.01133273  1.02380716  1.0378737
@@ -35,10 +35,13 @@ In [7]: dp.time_import()
   1.23270967  1.2552204   1.27887281  1.30790176  1.33168987  1.35676861
   1.38210788  1.40698488  1.43257523  1.67587557  1.69516923  1.71557213]
 
-In [8]: dp.mini_batch_fit()
+In [10]: dp.mini_batch_fit()
 
-In [9]: dp.create_km_map()
+In [11]: dp.create_km_map()
+Output is
 
-In [10]: dp.create_profiles()
+In [12]: dp.create_profiles()
+Output is
 
-In [11]: dp.create_spectral_map()
+In [13]: dp.create_spectral_map()
+Output is
