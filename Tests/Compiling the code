@@ -13,6 +13,8 @@ In [4]: imp.reload(km)
 Out[4]: <module 'kmeans' from '/Users/huang/k-means/K-Means-IRIS/k-means/kmeans.py'>
 
 In [5]: dp.read_data()
+True
+True
 
 In [6]: dp.read_lim_interp()
 
