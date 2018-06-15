@@ -7,11 +7,11 @@ In [1]: import kmeans as km
 In [2]: dp = km.KMeans()
 True
 
-In [5]: dp.read_data()
+In [3]: dp.read_data()
 True
 True
 
-In [6]: dp.read_lim_interp()
+In [4]: dp.read_lim_interp()
 
 True
 144.9 116
@@ -20,7 +20,7 @@ True
 wvl (298,) 144.9 166.1 144.9 166.1
 new_inte1 0 (3465, 157, 298)
 
-In [7]: dp.time_import()
+In [5]: dp.time_import()
 
 [ 3.01087999  2.07968804  1.68144476  1.49319015  1.385209    1.33487002
   1.28577806  1.25042893  1.22986171  1.21530668  1.20771638  1.20285873
@@ -28,13 +28,10 @@ In [7]: dp.time_import()
   1.24620321  1.26370355  1.27656819  1.38058775  1.39138919  1.58025982
   1.57924951  1.59041846  1.59494956  1.60059819  1.6088671   1.61208055]
 
-In [8]: dp.mini_batch_fit()
+In [6]: dp.mini_batch_fit()
 
-In [9]: dp.create_km_map()
-Output is
+In [7]: dp.create_km_map()
 
-In [10]: dp.create_profiles()
-Output is
+In [8]: dp.create_profiles()
 
-In [11]: dp.create_spectral_map()
-Output is
+In [9]: dp.create_spectral_map()
