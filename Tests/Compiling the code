@@ -7,11 +7,6 @@ In [1]: import kmeans as km
 In [2]: dp = km.KMeans()
 True
 
-In [3]: import imp
-
-In [4]: imp.reload(km)
-Out[4]: <module 'kmeans' from '/Users/huang/k-means/K-Means-IRIS/k-means/kmeans.py'>
-
 In [5]: dp.read_data()
 True
 True
