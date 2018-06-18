@@ -7,35 +7,42 @@ In [1]: import kmeans as km
 In [2]: dp = km.KMeans()
 True
 
-In [3]: import imp
-
-In [4]: imp.reload(km)
-Out[4]: <module 'kmeans' from '/Users/huang/k-means/K-Means-IRIS/k-means/kmeans.py'>
-
-In [5]: dp.__init__()
+In [3]: dp.read_data()
+True
 True
 
-In [6]: dp.read_data_npz(npzfilename="/net/opal/Volumes/Amnesia/mpi3drun/2Druns/genohm/rain/new_inte1_02.npy.npz")
+In [4]: dp.read_lim_interp()
 
-In []: dp.read_data_ncdf(rbfilename='/net/opal/Volumes/Amnesia/mpi3drun/2Druns/genohm/rain/output_ray_l2d90x40r.ncdf')
+True
+144.9 116
+298.90567167 2.8 (298,)
+3465 157 (3465, 157, 298)
+wvl (298,) 144.9 166.1 144.9 166.1
+new_inte1 0 (3465, 157, 298)
 
-In []: dp.read_data_pck(kmeansfilename='/net/opal/Volumes/Amnesia/mpi3drun/2Druns/genohm/rain/k-means.pck')
+In [5]: dp.time_import()
+[  9.53674316e-08   4.76837158e-08   3.17891439e-08   2.38418579e-08
+   1.90734863e-08   1.58945719e-08   1.36239188e-08   1.19209290e-08
+   1.05963813e-08   9.53674316e-09   8.66976651e-09   7.94728597e-09
+   7.33595628e-09   6.81195940e-09   6.35782878e-09   5.96046448e-09
+   5.60984892e-09   5.29819065e-09   5.01933851e-09   4.76837158e-09
+   4.54130627e-09   4.33488326e-09   4.14641007e-09   3.97364299e-09
+   3.81469727e-09   3.66797814e-09   3.53212710e-09   3.40597970e-09
+   3.28853213e-09   3.17891439e-09]
+   
+In [6]: dp.mini_batch_fit()
+time =  9.5367431640625e-07
+inertia =  [  7.51655783e-14   4.14735332e-14   3.50332433e-14   2.85487044e-14
+   2.92478311e-14   1.91245683e-14   1.84353799e-14   2.52817652e-14
+   1.72230677e-14   1.93927347e-14   1.46836561e-14   1.51047533e-14
+   1.19583906e-14   1.33402706e-14   1.05154924e-14   1.21233765e-14
+   1.65789455e-14   2.05945081e-14   9.84560621e-15   1.39281831e-14
+   1.16482181e-14   1.48586858e-14   1.40201963e-14   1.05394782e-14
+   1.70941073e-14   1.01707174e-14   8.18372983e-15   9.09347414e-15
+   1.09486371e-14   1.02866567e-14]
+   
+In [7]: dp.create_km_map()
 
-In [7]: dp.wavelength_distinction()
+In [8]: dp.create_profiles()
 
-In [8]: dp.individual_spectral_data()
-
-In [9]: dp.interp()
-279.263359184 116
-0.54268259997 2.8 (0,)
-3465 157 (3465, 157, 0)
-
-In [10]: dp.time_import()
-
-In [11]: dp.mini_batch_fit()
-
-In [12]: dp.create_km_map()
-
-In [13]: dp.create_k_means_maps()
-
-In [14]: dp.create_spectral_map()
+In [9]: dp.create_spectral_map()
