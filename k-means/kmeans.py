@@ -1,5 +1,6 @@
 '''
 This allows to handle something
+JMS Explain things here.
 '''
 import pickle
 import time
@@ -10,46 +11,43 @@ from sklearn.cluster import MiniBatchKMeans
 from scipy.ndimage.interpolation import shift
 import helita.io.ncdf as nd
 
-class KMeans():
+class kmeans():
     '''
+    JMS No need of this
     This is the class
     '''
 
     def __init__(self, verbose=True):
         '''
+        JMS No need of this
         initializes variables tests
         '''
 
         if verbose:
-            print("True")
-
-    def read_data_npz(self, npzfilename="/net/opal/Volumes/Amnesia/mpi3drun/2Druns/genohm/rain/new_inte1_02.npy.npz"):
-        '''
-        reads data, loads data, saves the loading of the data
-        '''
-
-        self.data = np.load(npzfilename)
-        self.i_3 = self.data["arr_0"]
-        self.wvl = self.data["arr_1"]
-        print("True")
+            self.verbose=True
 
     def read_data_ncdf(self, rbfilename='output_ray_l2d90x40r.ncdf'):
+        '''
+        Reading from the original RH code ncdf files
+        '''
         self.wvl1 = nd.getvar(rbfilename, 'wavelength')
         self.inte = nd.getvar(rbfilename, 'intensity', memmap=True)
         print("True")
 
     def read_data_pck(self, kmeansfilename='k-means.pck'):
+        '''
+        def save_all_pkl(self,filename=''):
+            data = self.__dict__
+            filehandler = open(filename+'.opy', 'wb')
+            pickle.dump(data, filehandler,protocol=4)
+        def load_all_pkl(self,filename):
+            filehandler = open(filename, 'rb')
+            data=pickle.load(filehandler)
+            for idata in data.keys():
+                setattr(self,idata,data[idata])
+        '''
         pick_in = open(kmeansfilename, 'rb')
         self.k_m = pickle.load(pick_in)
-
-    def read_data(self):
-        self.read_data_npz(npzfilename="/net/opal/Volumes/Amnesia/mpi3drun/2Druns/genohm/rain/new_inte1_02.npy.npz")
-        self.read_data_ncdf(rbfilename='/net/opal/Volumes/Amnesia/mpi3drun/2Druns/genohm/rain/output_ray_l2d90x40r.ncdf')
-        self.read_data_pck(kmeansfilename='/Users/huang/helita/helita/sim/k-means.pck')
-
-    # def read_data_pck(self):
-    #     pick_in = open('k-means.pck', 'rb')
-    #     self.k_m = pickle.load(pick_in)
 
     def wavelength_distinction(self, delta=5):
         '''
@@ -58,6 +56,7 @@ class KMeans():
         by delta, appends that value into limits array
         Loops through the limits array, and sees if the value for one index
         in limits has a greater difference than 1 than the previous index.
+        JMS follow standards of documentation.
         '''
 
         delwvl = self.wvl1-shift(self.wvl1, 1)
@@ -65,7 +64,7 @@ class KMeans():
         self.limits = [v for v in range(1, len(delwvl)) if np.abs(delwvl[v]-new_delwvl[v]) > delta]
         self.limits.append(len(self.wvl1))
 
-    def individual_spectral_data(self, delta=5):
+    def print_list_wvl(self):
         '''
         The profile at inte is added to the array new_inte
         '''
@@ -78,10 +77,29 @@ class KMeans():
         count = 0
         for ind in range(0, np.size(self.limits)-1):
             if self.limits[ind+1]-self.limits[ind] > 1:
-                self.new_inte[count] = self.inte[:, :, self.limits[ind]:self.limits[ind+1]-1] # var
+                print('%i,wvl=%0.1f' %(count,self.wvl1[self.limits[ind]]))
                 count = count + 1
 
-    def interp(self, ind=0, savefile=None):
+
+    def individual_spectral_data(self, delta=5):
+        '''
+        The profile at inte is added to the array new_inte
+        '''
+        if not hasattr(self, 'new_inte'):
+            self.new_inte = {}
+            self.new_wvl = {}
+
+        if not hasattr(self, 'limits'):
+            self.wavelength_distinction(delta)
+
+        count = 0
+        for ind in range(0, np.size(self.limits)-1):
+            if self.limits[ind+1]-self.limits[ind] > 1:
+                self.new_inte[count] = self.inte[:, :, self.limits[ind]:self.limits[ind+1]-1] # var
+                self.new_wvl[count] = self.wvl1[self.limits[ind]:self.limits[ind+1]-1]
+                count = count + 1
+
+    def km_interp(self, ind=0, savefile=None):
         '''
         interpolation of the axis
         plots wvl against new_inte in an uniform axis(wvlax)
@@ -89,47 +107,39 @@ class KMeans():
         if not hasattr(self, 'wvlax'):
             self.wvlax = {}
 
-        delwvl = self.wvl1-shift(self.wvl1, 1)
+        delwvl = np.gradient(self.new_wvl[ind])
 
         if not hasattr(self, 'new_inte1'):
             self.new_inte1 = {}
 
-        if self.limits[ind+1]-self.limits[ind] > 1:
-            print(self.wvl1[self.limits[ind]], self.limits[ind+1])
-            mindelwvl = np.min(delwvl[self.limits[ind]:self.limits[ind+1]-1])
-            n_points = np.min(((np.max(self.wvl1)-np.min(self.wvl1))/mindelwvl, 3000))
 
-            if n_points>5:
-                max_value = np.max(self.wvl1[self.limits[ind]:self.limits[ind+1]-1])
-                min_value = np.min(self.wvl1[self.limits[ind]:self.limits[ind+1]-1])
-                self.wvlax[ind] = np.linspace(min_value, max_value, num=n_points)
-                print(n_points, mindelwvl, np.shape(self.wvlax[ind]))
-                inte1 = np.zeros((self.inte.shape[0],
-                                  self.inte.shape[1], np.shape(self.wvlax[ind])[0]))
-                print(self.inte.shape[0], self.inte.shape[1], np.shape(inte1))
-                print('wvl', np.shape(self.wvlax[ind]),
-                      np.min(self.wvlax[ind]), np.max(self.wvlax[ind]),
-                      np.min(self.wvl1[self.limits[ind]:self.limits[ind+1]-1]),
-                      np.max(self.wvl1[self.limits[ind]:self.limits[ind+1]-1]))
+        mindelwvl = np.min(delwvl)
+        n_points = np.min([(np.max(self.new_wvl[ind])-np.min(self.new_wvl[ind]))/mindelwvl, 4000])
 
-                for ind2 in range(0, len(self.new_inte[ind][:, 0, 0])):
-                    for ind3 in range(0, len(self.new_inte[ind][0, :, 0])):
-                        inte1[ind2, ind3, :] = np.interp(self.wvlax[ind],
-                                                        self.wvl1[self.limits[ind]:
-                                                                 self.limits[ind+1]-1],
-                                                        self.new_inte[ind][ind2, ind3, :])
+        if n_points>5:
+            max_value = np.max(self.new_wvl[ind])
+            min_value = np.min(self.new_wvl[ind])
+            self.wvlax[ind] = np.linspace(min_value, max_value, num=n_points)
+            inte1 = np.zeros((self.inte.shape[0],
+                              self.inte.shape[1], np.shape(self.wvlax[ind])[0]))
 
-            self.new_inte1[ind] = inte1
-            print('new_inte1', ind, np.shape(self.new_inte1[ind]))
-            if savefile != None:
-                mg2_cube = self.new_inte1[ind]
-                np.save(savefile + '.npy', mg2_cube)
+            for ind2 in range(0, len(self.new_inte[ind][:, 0, 0])):
+                for ind3 in range(0, len(self.new_inte[ind][0, :, 0])):
+                    inte1[ind2, ind3, :] = np.interp(self.wvlax[ind],
+                                                    self.new_wvl[ind],
+                                                    self.new_inte[ind][ind2, ind3, :])
+
+        self.new_inte1[ind] = inte1
+        print('new_inte1', ind, np.shape(self.new_inte1[ind]))
+        if savefile != None:
+            mg2_cube = self.new_inte1[ind]
+            np.save(savefile + '.npy', mg2_cube)
 
 
-    def read_lim_interp(self, ind=0, delta=5):
-       self.wavelength_distinction()
-       self.individual_spectral_data(delta=5)
-       self.interp(ind=0)
+    def read_lim_interp(self, rbfilename='output_ray_l2d90x40r.ncdf', ind=0, delta=5):
+       self.read_data_ncdf(rbfilename=rbfilename)
+       self.individual_spectral_data(delta=delta)
+       self.km_interp(ind=ind)
 
     def time_import(self):
         '''
@@ -160,7 +170,7 @@ class KMeans():
         uses the MiniBatchKMeans function to fit the i3_2d data into clusters
         inputs: t0
         '''
-        
+
         self.t_zero = time.time()
         self.a = np.reshape(self.new_inte1[0], (self.new_inte1[0].shape[0]*self.new_inte1[0].shape[1], self.new_inte1[0].shape[2]))
         self.mini_km = MiniBatchKMeans(n_clusters=30).fit(self.a[1000:2000])
