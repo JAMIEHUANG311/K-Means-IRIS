@@ -34,22 +34,24 @@ class KMeans():
         print("True")
 
     def read_data_ncdf(self, rbfilename='output_ray_l2d90x40r.ncdf'):
+        '''
+        '''
+
         self.wvl1 = nd.getvar(rbfilename, 'wavelength')
         self.inte = nd.getvar(rbfilename, 'intensity', memmap=True)
         print("True")
 
     def read_data_pck(self, kmeansfilename='k-means.pck'):
+        '''
+        '''
+
         pick_in = open(kmeansfilename, 'rb')
         self.k_m = pickle.load(pick_in)
 
-    def read_data(self):
-        self.read_data_npz(npzfilename="/net/opal/Volumes/Amnesia/mpi3drun/2Druns/genohm/rain/new_inte1_02.npy.npz")
-        self.read_data_ncdf(rbfilename='/net/opal/Volumes/Amnesia/mpi3drun/2Druns/genohm/rain/output_ray_l2d90x40r.ncdf')
-        self.read_data_pck(kmeansfilename='/Users/huang/helita/helita/sim/k-means.pck')
-
-    # def read_data_pck(self):
-    #     pick_in = open('k-means.pck', 'rb')
-    #     self.k_m = pickle.load(pick_in)
+    # def read_data(self):
+    #     self.read_data_npz(npzfilename="/net/opal/Volumes/Amnesia/mpi3drun/2Druns/genohm/rain/new_inte1_02.npy.npz")
+    #     self.read_data_ncdf(rbfilename='/net/opal/Volumes/Amnesia/mpi3drun/2Druns/genohm/rain/output_ray_l2d90x40r.ncdf')
+    #     self.read_data_pck(kmeansfilename='/Users/huang/helita/helita/sim/k-means.pck')
 
     def wavelength_distinction(self, delta=5):
         '''
@@ -127,15 +129,19 @@ class KMeans():
 
 
     def read_lim_interp(self, ind=0, delta=5):
-       self.wavelength_distinction()
-       self.individual_spectral_data(delta=5)
-       self.interp(ind=0)
+        '''
+        calls the functions to 
+        '''
+
+        self.wavelength_distinction()
+        self.individual_spectral_data(delta=5)
+        self.interp(ind=0)
 
     def time_import(self):
         '''
-        uses the MiniBatchKMeans function to fit the i3_2d data into clusters
-            computes the inertia of the MiniBatchKMeans
-        inputs: t_m, inertia, t0, outputs:
+        uses the MiniBatchKMeans function to fit the i3_2d data into clusters,
+        computes the inertia of the MiniBatchKMeans
+        outputs: graph of t_m and inertia
         '''
 
         i3_2d = self.i_3.reshape(self.i_3.shape[0]*self.i_3.shape[1], self.i_3.shape[2])
@@ -158,7 +164,7 @@ class KMeans():
     def mini_batch_fit(self, ind=0):
         '''
         uses the MiniBatchKMeans function to fit the i3_2d data into clusters
-        inputs: t0
+        outputs: prints time and inertia
         '''
         
         self.t_zero = time.time()
@@ -198,9 +204,10 @@ class KMeans():
         creates the k_means maps
         plots the spectral profile for the different k-means labels
         wavelength on the x axis and intensity on the y axis
-        inputs: wvl, outputs: prints the image of the k-means labels
+        outputs: prints the image of the k-means labels
         '''
         # plt.subplots_adjust(bottom=0.15, top=.9, left=0.15)
+
         wvl = self.data["arr_1"]
         plt.figure(figsize=(20, 20))
         for i in range(0, 30):
@@ -212,14 +219,11 @@ class KMeans():
 
     def create_spectral_map(self):
         '''
-        reshapes into 2D array
-        interpolation
-        adjusts wvl axis
-        creates a spectral profile map
-        showing the
+        interpolation, creates a spectral profile map showing the
         location of the clusters in all the labels as a whole
-        inputs: i3, wvl, ax, outputs: prints the image of the spectral map
+        outputs: prints the image of the spectral map
         '''
+
         wvl = self.data["arr_1"]
         wvl_new = wvl*10.-2795.37
         plt.subplots_adjust(bottom=0.2, top=.9, left=0.15)
