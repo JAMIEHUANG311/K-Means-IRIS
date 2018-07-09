@@ -4,7 +4,7 @@ cd ~/k-means/K-Means-IRIS/k-means
 ipython
 In [1]: import kmeans as km
 
-In [2]: dp = km.KMeans()
+In [2]: dp = km.kmeans()
 True
 
 In [3]: dp.read_data()
