@@ -7,18 +7,19 @@ In [1]: import kmeans as km
 In [2]: dp = km.kmeans()
 True
 
-In [3]: dp.read_data()
-True
-True
+In [3]: dp.read_data_ncdf(rbfilename='/net/opal/Volumes/Amnesia/mpi3drun/2Druns/genohm/rain/output_ray_l2d90x40r.ncdf')
 
-In [4]: dp.read_lim_interp()
+In []: 
 
-True
-144.9 116
-298.90567167 2.8 (298,)
-3465 157 (3465, 157, 298)
-wvl (298,) 144.9 166.1 144.9 166.1
-new_inte1 0 (3465, 157, 298)
+In [4]: dp.wavelength_distinction()
+
+In [5]: dp.print_list_wvl()
+0,wvl=144.9
+1,wvl=194.3
+2,wvl=274.3
+3,wvl=391.9
+4,wvl=849.4
+5,wvl=865.5
 
 In [5]: dp.time_import()
 [  9.53674316e-08   4.76837158e-08   3.17891439e-08   2.38418579e-08
