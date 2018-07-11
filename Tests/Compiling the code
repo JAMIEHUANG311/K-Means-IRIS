@@ -24,19 +24,13 @@ In [7]: dp.print_list_wvl()
 5,wvl=865.5
 
 In [8]: dp.time_import()
-[  1.19209290e-07   5.96046448e-08   3.97364299e-08   2.98023224e-08
-   2.38418579e-08   1.98682149e-08   1.70298985e-08   1.49011612e-08
-   1.32454766e-08   1.19209290e-08   1.08372081e-08   9.93410746e-09
-   9.16994535e-09   8.51494925e-09   7.94728597e-09   7.45058060e-09
-   7.01231115e-09   6.62273831e-09   6.27417313e-09   5.96046448e-09
-   5.67663284e-09   5.41860407e-09   5.18301259e-09   4.96705373e-09
-   4.76837158e-09   4.58497268e-09   4.41515887e-09   4.25747463e-09
-   4.11066516e-09   3.97364299e-09]
+[  1.90734863e-07   9.53674316e-08   6.35782878e-08   4.76837158e-08
+   3.81469727e-08]
 
 MiniBatchKMeans(batch_size=100, compute_labels=True, init='k-means++',
-        init_size=None, max_iter=100, max_no_improvement=10,
-        n_clusters=300, n_init=10, random_state=None,
-        reassignment_ratio=0.01, tol=0.0, verbose=0)
+        init_size=None, max_iter=100, max_no_improvement=10, n_clusters=50,
+        n_init=10, random_state=None, reassignment_ratio=0.01, tol=0.0,
+        verbose=0)
    
 In [9]: dp.mini_batch_fit()
 time =  9.5367431640625e-07
