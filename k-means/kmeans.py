@@ -24,7 +24,20 @@ class kmeans():
         '''
 
         if verbose:
-            self.verbose=True
+            self.verbose = True
+
+
+    def read_data_npz(self, npzfilename="new_inte1_02.npy.npz"):
+        '''
+        reads data, loads data, saves the loading of the data
+        ???
+        '''
+
+        self.data = np.load(npzfilename)
+        self.i_3 = self.data["arr_0"]
+        self.wvl = self.data["arr_1"]
+        print("True")
+
 
     def read_data_ncdf(self, rbfilename='output_ray_l2d90x40r.ncdf'):
         '''
@@ -66,7 +79,7 @@ class kmeans():
         self.limits = [v for v in range(1, len(delwvl)) if np.abs(delwvl[v]-new_delwvl[v]) > delta]
         self.limits.append(len(self.wvl1))
 
-    def print_list_wvl(self):
+    def print_list_wvl(self, delta=5):
         '''
         The profile at inte is added to the array new_inte
         '''
@@ -79,7 +92,7 @@ class kmeans():
         count = 0
         for ind in range(0, np.size(self.limits)-1):
             if self.limits[ind+1]-self.limits[ind] > 1:
-                print('%i,wvl=%0.1f' %(count,self.wvl1[self.limits[ind]]))
+                print('%i,wvl=%0.1f' %(count, self.wvl1[self.limits[ind]]))
                 count = count + 1
 
 
@@ -90,6 +103,10 @@ class kmeans():
         if not hasattr(self, 'new_inte'):
             self.new_inte = {}
             self.new_wvl = {}
+            print('True')
+
+        self.new_inte = {}
+        self.new_wvl = {}
 
         if not hasattr(self, 'limits'):
             self.wavelength_distinction(delta)
@@ -101,11 +118,13 @@ class kmeans():
                 self.new_wvl[count] = self.wvl1[self.limits[ind]:self.limits[ind+1]-1]
                 count = count + 1
 
-    def km_interp(self, ind=0, savefile=None):
+    def km_interp(self, ind=0, savefile=None, min_n_wvl=500):
         '''
         interpolation of the axis
         plots wvl against new_inte in an uniform axis(wvlax)
         '''
+        self.new_inte1 = {}
+
         if not hasattr(self, 'wvlax'):
             self.wvlax = {}
 
@@ -114,11 +133,12 @@ class kmeans():
         if not hasattr(self, 'new_inte1'):
             self.new_inte1 = {}
 
-
         mindelwvl = np.min(delwvl)
-        n_points = np.min([(np.max(self.new_wvl[ind])-np.min(self.new_wvl[ind]))/mindelwvl, 4000])
+        n_points = np.min([(np.max(self.new_wvl[ind])-np.min(self.new_wvl[ind]))/mindelwvl, min_n_wvl])
 
-        if n_points>5:
+        inte1 = {}
+
+        if n_points > 5:
             max_value = np.max(self.new_wvl[ind])
             min_value = np.min(self.new_wvl[ind])
             self.wvlax[ind] = np.linspace(min_value, max_value, num=n_points)
@@ -138,13 +158,13 @@ class kmeans():
             np.save(savefile + '.npy', mg2_cube)
 
 
-    def read_lim_interp(self, rbfilename='output_ray_l2d90x40r.ncdf', ind=0, delta=5):
-       self.read_data_ncdf(rbfilename=rbfilename)
-       self.individual_spectral_data(delta=delta)
-       self.km_interp(ind=ind)
+    def read_lim_interp(self, rbfilename='/net/opal/Volumes/Amnesia/mpi3drun/2Druns/genohm/rain/output_ray_l2d90x40r.ncdf', ind=0, delta=5):
+        self.read_data_ncdf(rbfilename=rbfilename)
+        self.individual_spectral_data(delta=delta)
+        self.km_interp(ind=ind)
 
 
-    def time_import(self):
+    def time_import(self, maxnum=5):
         '''
         uses the MiniBatchKMeans function to fit the i3_2d data into clusters,
         computes the inertia of the MiniBatchKMeans
@@ -152,20 +172,16 @@ class kmeans():
         '''
 
         i3_2d = self.i_3.reshape(self.i_3.shape[0]*self.i_3.shape[1], self.i_3.shape[2])
-        self.t_m = np.zeros(30)
-        self.inertia = np.zeros(30)
+        self.t_m = np.zeros(maxnum)
+        self.inertia = np.zeros(maxnum)
         self.t_zero = time.time()
         self.t_mini_batch = time.time() - self.t_zero
-        for i in range(0, 30):
-            self.mini_km = MiniBatchKMeans(n_clusters=(i+1)*10, n_init=10).fit(i3_2d[1000:2000, 1000:2000])
+        for i in range(0, maxnum):
+            self.mini_km = MiniBatchKMeans(n_clusters=(i+1)*10, n_init=10).fit(i3_2d)
             self.t_m[i] = self.t_mini_batch/((i+1)*10)
             self.inertia[i] = self.mini_km.inertia_
+            print(i)
         print(self.t_m)
-        plt.subplot(2, 1, 1)
-        plt.plot(self.t_m)
-        plt.subplot(2, 1, 2)
-        plt.plot(self.inertia)
-        plt.show()
         return self.mini_km
 
     def mini_batch_fit(self, ind=0):
@@ -176,7 +192,7 @@ class kmeans():
 
         self.t_zero = time.time()
         self.a = np.reshape(self.new_inte1[0], (self.new_inte1[0].shape[0]*self.new_inte1[0].shape[1], self.new_inte1[0].shape[2]))
-        self.mini_km = MiniBatchKMeans(n_clusters=30).fit(self.a[1000:2000])
+        self.mini_km = MiniBatchKMeans(n_clusters=30).fit(self.a)
         print("time = ", self.t_mini_batch)
         print("inertia = ", self.inertia)
         # print("init = ", self.mini_km.n_init)
