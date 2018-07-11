@@ -13,9 +13,9 @@ In [4]: dp.read_data_pck(kmeansfilename='/Users/huang/helita/helita/sim/k-means.
 
 In [5]: dp.read_data_npz(npzfilename='/net/opal/Volumes/Amnesia/mpi3drun/2Druns/genohm/rain/new_inte1_02.npy.npz')
 
-In [5]: dp.wavelength_distinction()
+In [6]: dp.wavelength_distinction()
 
-In [6]: dp.print_list_wvl()
+In [7]: dp.print_list_wvl()
 0,wvl=144.9
 1,wvl=194.3
 2,wvl=274.3
@@ -23,17 +23,22 @@ In [6]: dp.print_list_wvl()
 4,wvl=849.4
 5,wvl=865.5
 
-In [5]: dp.time_import()
-[  9.53674316e-08   4.76837158e-08   3.17891439e-08   2.38418579e-08
-   1.90734863e-08   1.58945719e-08   1.36239188e-08   1.19209290e-08
-   1.05963813e-08   9.53674316e-09   8.66976651e-09   7.94728597e-09
-   7.33595628e-09   6.81195940e-09   6.35782878e-09   5.96046448e-09
-   5.60984892e-09   5.29819065e-09   5.01933851e-09   4.76837158e-09
-   4.54130627e-09   4.33488326e-09   4.14641007e-09   3.97364299e-09
-   3.81469727e-09   3.66797814e-09   3.53212710e-09   3.40597970e-09
-   3.28853213e-09   3.17891439e-09]
+In [8]: dp.time_import()
+[  1.19209290e-07   5.96046448e-08   3.97364299e-08   2.98023224e-08
+   2.38418579e-08   1.98682149e-08   1.70298985e-08   1.49011612e-08
+   1.32454766e-08   1.19209290e-08   1.08372081e-08   9.93410746e-09
+   9.16994535e-09   8.51494925e-09   7.94728597e-09   7.45058060e-09
+   7.01231115e-09   6.62273831e-09   6.27417313e-09   5.96046448e-09
+   5.67663284e-09   5.41860407e-09   5.18301259e-09   4.96705373e-09
+   4.76837158e-09   4.58497268e-09   4.41515887e-09   4.25747463e-09
+   4.11066516e-09   3.97364299e-09]
+
+MiniBatchKMeans(batch_size=100, compute_labels=True, init='k-means++',
+        init_size=None, max_iter=100, max_no_improvement=10,
+        n_clusters=300, n_init=10, random_state=None,
+        reassignment_ratio=0.01, tol=0.0, verbose=0)
    
-In [6]: dp.mini_batch_fit()
+In [9]: dp.mini_batch_fit()
 time =  9.5367431640625e-07
 inertia =  [  7.51655783e-14   4.14735332e-14   3.50332433e-14   2.85487044e-14
    2.92478311e-14   1.91245683e-14   1.84353799e-14   2.52817652e-14
@@ -44,8 +49,8 @@ inertia =  [  7.51655783e-14   4.14735332e-14   3.50332433e-14   2.85487044e-14
    1.70941073e-14   1.01707174e-14   8.18372983e-15   9.09347414e-15
    1.09486371e-14   1.02866567e-14]
    
-In [7]: dp.create_km_map()
+In [10]: dp.create_km_map()
 
-In [8]: dp.create_profiles()
+In [11]: dp.create_profiles()
 
-In [9]: dp.create_spectral_map()
+In [12]: dp.create_spectral_map()
