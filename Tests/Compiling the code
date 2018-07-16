@@ -4,33 +4,35 @@ cd ~/k-means/K-Means-IRIS/k-means
 ipython
 In [1]: import kmeans as km
 
-In [2]: dp = km.KMeans()
+In [2]: dp = km.kmeans()
 True
 
-In [3]: dp.read_data()
-True
-True
+In [3]: dp.read_data_ncdf(rbfilename='/net/opal/Volumes/Amnesia/mpi3drun/2Druns/genohm/rain/output_ray_l2d90x40r.ncdf')
 
-In [4]: dp.read_lim_interp()
+In [4]: dp.read_data_pck(kmeansfilename='/Users/huang/helita/helita/sim/k-means.pck')
 
-True
-144.9 116
-298.90567167 2.8 (298,)
-3465 157 (3465, 157, 298)
-wvl (298,) 144.9 166.1 144.9 166.1
-new_inte1 0 (3465, 157, 298)
+In [5]: dp.read_data_npz(npzfilename='/net/opal/Volumes/Amnesia/mpi3drun/2Druns/genohm/rain/new_inte1_02.npy.npz')
 
-In [5]: dp.time_import()
-[  9.53674316e-08   4.76837158e-08   3.17891439e-08   2.38418579e-08
-   1.90734863e-08   1.58945719e-08   1.36239188e-08   1.19209290e-08
-   1.05963813e-08   9.53674316e-09   8.66976651e-09   7.94728597e-09
-   7.33595628e-09   6.81195940e-09   6.35782878e-09   5.96046448e-09
-   5.60984892e-09   5.29819065e-09   5.01933851e-09   4.76837158e-09
-   4.54130627e-09   4.33488326e-09   4.14641007e-09   3.97364299e-09
-   3.81469727e-09   3.66797814e-09   3.53212710e-09   3.40597970e-09
-   3.28853213e-09   3.17891439e-09]
+In [6]: dp.wavelength_distinction()
+
+In [7]: dp.print_list_wvl()
+0,wvl=144.9
+1,wvl=194.3
+2,wvl=274.3
+3,wvl=391.9
+4,wvl=849.4
+5,wvl=865.5
+
+In [8]: dp.time_import()
+[  1.90734863e-07   9.53674316e-08   6.35782878e-08   4.76837158e-08
+   3.81469727e-08]
+
+MiniBatchKMeans(batch_size=100, compute_labels=True, init='k-means++',
+        init_size=None, max_iter=100, max_no_improvement=10, n_clusters=50,
+        n_init=10, random_state=None, reassignment_ratio=0.01, tol=0.0,
+        verbose=0)
    
-In [6]: dp.mini_batch_fit()
+In [9]: dp.mini_batch_fit()
 time =  9.5367431640625e-07
 inertia =  [  7.51655783e-14   4.14735332e-14   3.50332433e-14   2.85487044e-14
    2.92478311e-14   1.91245683e-14   1.84353799e-14   2.52817652e-14
@@ -41,8 +43,8 @@ inertia =  [  7.51655783e-14   4.14735332e-14   3.50332433e-14   2.85487044e-14
    1.70941073e-14   1.01707174e-14   8.18372983e-15   9.09347414e-15
    1.09486371e-14   1.02866567e-14]
    
-In [7]: dp.create_km_map()
+In [10]: dp.create_km_map()
 
-In [8]: dp.create_profiles()
+In [11]: dp.create_profiles()
 
-In [9]: dp.create_spectral_map()
+In [12]: dp.create_spectral_map()

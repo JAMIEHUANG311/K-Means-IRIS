@@ -123,6 +123,8 @@ class kmeans():
         plots wvl against new_inte in an uniform axis(wvlax)
         '''
 
+        self.new_inte1 = {}
+
         if not hasattr(self, 'wvlax'):
             self.wvlax = {}
 
@@ -133,6 +135,7 @@ class kmeans():
 
         mindelwvl = np.min(delwvl)
         n_points = np.min([(np.max(self.new_wvl[ind])-np.min(self.new_wvl[ind]))/mindelwvl, min_n_wvl])
+
 
         inte1 = {}
 
@@ -162,7 +165,8 @@ class kmeans():
         self.km_interp(ind=ind)
 
 
-    def time_import(self, maxnum=10):
+
+    def time_import(self, maxnum=5):
         '''
         uses the MiniBatchKMeans function to fit the i3_2d data into clusters,
         computes the inertia of the MiniBatchKMeans
@@ -189,7 +193,8 @@ class kmeans():
         '''
 
         self.t_zero = time.time()
-        self.a = np.reshape(self.new_inte1[0], (np.shape(self.new_inte1[0])[0]*np.shape(self.new_inte1[0])[1], np.shape(self.new_inte1[0])[2]))
+
+        self.a = np.reshape(self.new_inte1[0], (self.new_inte1[0].shape[0]*self.new_inte1[0].shape[1], self.new_inte1[0].shape[2]))
         self.mini_km = MiniBatchKMeans(n_clusters=30).fit(self.a)
         print("time = ", self.t_mini_batch)
         print("inertia = ", self.inertia)
