@@ -7,9 +7,9 @@ In [1]: import kmeans as km
 In [2]: dp = km.kmeans()
 True
 
-In [3]: dp.read_data_ncdf(rbfilename='/net/opal/Volumes/Amnesia/mpi3drun/2Druns/genohm/rain/output_ray_l2d90x40r.ncdf')
+In [3]: dp.read_data_ncdf(ncdffilename='/net/opal/Volumes/Amnesia/mpi3drun/2Druns/genohm/rain/output_ray_l2d90x40r.ncdf')
 
-In [4]: dp.read_data_pck(kmeansfilename='/Users/huang/helita/helita/sim/k-means.pck')
+In [4]: dp.read_data_pck(filename='/Users/huang/helita/helita/sim/k-means.pck')
 
 In [5]: dp.read_data_npz(npzfilename='/net/opal/Volumes/Amnesia/mpi3drun/2Druns/genohm/rain/new_inte1_02.npy.npz')
 
