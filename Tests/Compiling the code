@@ -15,7 +15,7 @@ In [5]: dp.read_data_npz(npzfilename='/net/opal/Volumes/Amnesia/mpi3drun/2Druns/
 
 In [6]: dp.spect_lines_limits()
 
-In [7]: dp.print_list_wvl()
+In [7]: dp.print_line_list()
 0,wvl=144.9
 1,wvl=194.3
 2,wvl=274.3
@@ -23,14 +23,11 @@ In [7]: dp.print_list_wvl()
 4,wvl=849.4
 5,wvl=865.5
 
-In [8]: dp.time_import()
+In [8]: dp.read_lim_interp()
+
+In [9]: dp.km_clusters()
 [  1.90734863e-07   9.53674316e-08   6.35782878e-08   4.76837158e-08
    3.81469727e-08]
-
-MiniBatchKMeans(batch_size=100, compute_labels=True, init='k-means++',
-        init_size=None, max_iter=100, max_no_improvement=10, n_clusters=50,
-        n_init=10, random_state=None, reassignment_ratio=0.01, tol=0.0,
-        verbose=0)
    
 In [9]: dp.mini_batch_fit()
 time =  9.5367431640625e-07
