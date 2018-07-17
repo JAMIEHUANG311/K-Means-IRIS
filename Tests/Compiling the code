@@ -13,7 +13,7 @@ In [4]: dp.read_data_pck(filename='/Users/huang/helita/helita/sim/k-means.pck')
 
 In [5]: dp.read_data_npz(npzfilename='/net/opal/Volumes/Amnesia/mpi3drun/2Druns/genohm/rain/new_inte1_02.npy.npz')
 
-In [6]: dp.wavelength_distinction()
+In [6]: dp.spect_lines_limits()
 
 In [7]: dp.print_list_wvl()
 0,wvl=144.9
