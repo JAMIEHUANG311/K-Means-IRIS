@@ -1,0 +1,49 @@
+'''
+This allows to handle something
+JMS Explain things here.
+'''
+
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.decomposition import PCA
+
+class pca(): 
+
+    def read_data_iris(self, iris_data="/Users/huang/helita/helita/sim/iris_MgII_datacube.npy"):
+
+        self.iris_data = np.load(iris_data)
+
+
+    def pca_show(self):
+        
+        self.i3 = self.iris_data[3, 50:699, 100:]
+        plt.imshow(self.i3)
+        pca = PCA(n_components=20)
+        self.out = pca.fit_transform(self.i3)
+        self.i3r = pca.inverse_transform(self.out) # np.dot(out, pca.components_)
+        plt.figure(figsize = (20,20))
+        plt.subplot(3,1,1)
+        plt.imshow(self.i3)
+        plt.subplot(3,1,2)
+        plt.imshow(self.i3r)
+        plt.subplot(3,1,3)
+        plt.imshow((self.i3-self.i3r)/(self.i3+self.i3r))
+        plt.show()
+
+
+    def pca_components(self):
+        plt.figure(figsize = (20,20))
+        print(np.shape(self.pca.components_))
+        for i in range(1, 21):
+            plt.subplot(5,4,i)
+            plt.plot(self.pca.components_[i-1,:])
+        plt.show()
+
+
+    def pca_plots(self):
+        plt.figure(figsize = (20,20))
+        for i in range(1, 21):
+            plt.subplot(5,4,i)
+            plt.plot(self.i3[i*10+190,600:1000])
+            plt.plot(self.i3r[i*10+190,600:1000])
+        plt.show()
