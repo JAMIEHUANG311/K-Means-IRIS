@@ -10,12 +10,22 @@ from sklearn.decomposition import PCA
 class pca(): 
 
     def read_data_iris(self, iris_data="/Users/huang/helita/helita/sim/iris_MgII_datacube.npy"):
+        '''
+        reads data, loads data
+        '''
 
         self.iris_data = np.load(iris_data)
 
 
     def pca_show(self):
-        
+        '''
+        shows the image of the i3 datacube
+        fits the pca into 20 components
+        returns transformed data of i3 and i3r
+        plots the transformed data of i3 and i3r
+        ???
+        '''
+
         self.i3 = self.iris_data[3, 50:699, 100:]
         plt.imshow(self.i3)
         pca = PCA(n_components=20)
@@ -32,6 +42,10 @@ class pca():
 
 
     def pca_components(self):
+        '''
+        graphs the 20 components of the pca plot
+        '''
+
         plt.figure(figsize = (20,20))
         print(np.shape(self.pca.components_))
         for i in range(1, 21):
@@ -41,6 +55,10 @@ class pca():
 
 
     def pca_plots(self):
+        '''
+        graphs the fits of the 20 components of the pca plot
+        '''
+
         plt.figure(figsize = (20,20))
         for i in range(1, 21):
             plt.subplot(5,4,i)
