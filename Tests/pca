@@ -1,0 +1,14 @@
+cd ~/k-means/K-Means-IRIS/k-means
+ipython
+
+In [1]: import pca as pc
+
+In [2]: dd = pc.pca()
+
+In [3]: dd.read_data_iris()
+
+In [4]: dd.pca_show()
+
+In [5]: dd.pca_components()
+
+In [6]: dd.pca_plots()
