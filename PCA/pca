@@ -6,8 +6,18 @@ JMS Explain things here.
 import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.decomposition import PCA
+import kmeans as km
 
-class pca(): 
+class pca(kmeans): 
+
+    class pca(kmeans):
+        '''
+        This superclass conects the pca code to the kmeans code
+        '''
+
+        def __init__(self, *args, **kwargs):
+            super(pca, self).__init__(*args, **kwargs)
+
 
     def read_data_iris(self, iris_data="/Users/huang/helita/helita/sim/iris_MgII_datacube.npy"):
         '''
@@ -17,27 +27,30 @@ class pca():
         self.iris_data = np.load(iris_data)
 
 
-    def pca_show(self):
+    def pca_ncomp(self, ind=0, n_components=20):
         '''
-        shows the image of the i3 datacube
         fits the pca into 20 components
-        returns transformed data of i3 and i3r
+        returns transformed and inverse transformed data of int_indv
+        '''
+
+        pca = PCA(n_components=n_components)
+        self.pca_fit = pca.fit_transform(self.int_indv(ind))
+        self.pca_inv = pca.inverse_transform(self.pca_fit) # np.dot( self.pca_fit, pca.components_)
+
+
+    def pca_show(self, ind=0):
+        '''
         plots the transformed data of i3 and i3r
         ???
         '''
-
-        self.i3 = self.iris_data[3, 50:699, 100:]
-        plt.imshow(self.i3)
-        pca = PCA(n_components=20)
-        self.out = pca.fit_transform(self.i3)
-        self.i3r = pca.inverse_transform(self.out) # np.dot(out, pca.components_)
-        plt.figure(figsize = (20,20))
-        plt.subplot(3,1,1)
-        plt.imshow(self.i3)
-        plt.subplot(3,1,2)
-        plt.imshow(self.i3r)
-        plt.subplot(3,1,3)
-        plt.imshow((self.i3-self.i3r)/(self.i3+self.i3r))
+        plt.imshow(self.int_indv(ind))
+        plt.figure(figsize=(20, 20))
+        plt.subplot(3, 1, 1)
+        plt.imshow(self.int_indv(ind))
+        plt.subplot(3, 1, 2)
+        plt.imshow(self.pca_inv)
+        plt.subplot(3, 1, 3)
+        plt.imshow((self.int_indv(ind) - self.pca_inv) / (self.int_indv(ind) + self.pca_inv))
         plt.show()
 
 
@@ -46,11 +59,11 @@ class pca():
         graphs the 20 components of the pca plot
         '''
 
-        plt.figure(figsize = (20,20))
+        plt.figure(figsize=(20, 20))
         print(np.shape(self.pca.components_))
         for i in range(1, 21):
-            plt.subplot(5,4,i)
-            plt.plot(self.pca.components_[i-1,:])
+            plt.subplot(5, 4, i)
+            plt.plot(self.pca.components_[i-1, :])
         plt.show()
 
 
@@ -59,9 +72,10 @@ class pca():
         graphs the fits of the 20 components of the pca plot
         '''
 
-        plt.figure(figsize = (20,20))
+        plt.figure(figsize=(20, 20))
         for i in range(1, 21):
-            plt.subplot(5,4,i)
-            plt.plot(self.i3[i*10+190,600:1000])
-            plt.plot(self.i3r[i*10+190,600:1000])
+            plt.subplot(5, 4, i)
+            plt.plot(self.i3[i*10+190, 600:1000])
+            plt.plot(self.i3r[i*10+190, 600:1000])
         plt.show()
+        
