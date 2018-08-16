@@ -7,8 +7,10 @@ In [2]: dd = pc.pca()
 
 In [3]: dd.read_data_iris()
 
-In [4]: dd.pca_show()
+In [4]: dd.pca_ncomp()
 
-In [5]: dd.pca_components()
+In [5]: dd.pca_show()
 
-In [6]: dd.pca_plots()
+In [6]: dd.pca_components()
+
+In [7]: dd.pca_plots()
